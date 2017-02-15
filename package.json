@@ -1,0 +1,17 @@
+{
+  "name": "podium-schemas",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "",
+  "main": "./index.js",
+  "scripts": {
+    "test": "ava",
+    "test:watch": "ava --watch"
+  },
+  "dependencies": {
+    "joi": "^10.2.2"
+  },
+  "devDependencies": {
+    "ava": "^0.18.1"
+  }
+}
