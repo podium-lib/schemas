@@ -1,7 +1,6 @@
 {
   "name": "podium-schemas",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "",
   "main": "./index.js",
   "scripts": {
