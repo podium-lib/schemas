@@ -46,3 +46,36 @@ test('responseSchema smoketest 5', t => {
     const res = Joi.validate(obj, responseSchema);
     t.truthy(res.error, 'error is set');
 });
+
+
+test('allow maxDataAge and maxAge', t => {
+    const obj = {
+        id: 'lol',
+        version: 'lal',
+        data: {
+            html: 'tralla',
+        },
+        metadata: {
+            maxDataAge: 10,
+            maxAge: 20,
+        },
+    };
+    const res = Joi.validate(obj, responseSchema);
+    t.falsy(res.error, 'error is not set');
+});
+
+test('reject maxDataAge when above maxAge', t => {
+    const obj = {
+        id: 'lol',
+        version: 'lal',
+        data: {
+            html: 'tralla',
+        },
+        metadata: {
+            maxDataAge: 30,
+            maxAge: 20,
+        },
+    };
+    const res = Joi.validate(obj, responseSchema);
+    t.truthy(res.error, 'error is not set');
+});
