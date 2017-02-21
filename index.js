@@ -50,7 +50,10 @@ const resourceEntry = Joi
 
 const metadataSchema = Joi
     .object().keys({
-        fallback: contentSchema,
+        fallbacks: Joi
+            .object()
+            .pattern(/.*/, contentSchema)
+            .optional(),
         maxDataAge: Joi
             .number()
             .unit('seconds')
