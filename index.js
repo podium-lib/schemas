@@ -44,7 +44,9 @@ const resourceEntry = Joi
             .string()
             .default('GET')
             .optional(),
-        params: Joi.any(),
+        params: Joi.array()
+            .optional()
+            .items(Joi.string()),
     })
     .unknown(false);
 
