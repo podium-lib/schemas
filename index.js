@@ -54,8 +54,8 @@ const metadataSchema = Joi
     .object().keys({
         fallbacks: Joi
             .object()
-            .pattern(/.*/, contentSchema)
-            .optional(),
+            .pattern(/.*/, contentSchema),
+        fallback: contentSchema,
         maxDataAge: Joi
             .number()
             .unit('seconds')
@@ -74,6 +74,7 @@ const metadataSchema = Joi
             .items(resourceEntry)
             .optional(),
     })
+    .xor('fallback', 'fallbacks')
     .unknown(false);
 
 const responseSchema = Joi
