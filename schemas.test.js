@@ -77,5 +77,43 @@ test('reject maxDataAge when above maxAge', t => {
         },
     };
     const res = Joi.validate(obj, responseSchema);
-    t.truthy(res.error, 'error is not set');
+    t.truthy(res.error, 'error is set');
+});
+
+test('accept arguments key to fallbacks', t => {
+    const obj = {
+        fallbacks: {
+            'sup': {
+                html: '<h1>Sup</h1>',
+            }
+        },
+        maxAge: 60,
+    };
+    const res = Joi.validate(obj, metadataSchema);
+    t.falsy(res.error, 'error is not set');
+});
+
+test('accept empty arguments key to fallbacks', t => {
+    const obj = {
+        fallbacks: {
+            '': {
+                html: '<h1>Sup</h1>',
+            }
+        },
+        maxAge: 60,
+    };
+    const res = Joi.validate(obj, metadataSchema);
+    t.falsy(res.error, 'error is not set');
+});
+
+test('enforce content in fallabck', t => {
+    const obj = {
+        fallbacks: {
+            '': {
+            }
+        },
+        maxAge: 60,
+    };
+    const res = Joi.validate(obj, metadataSchema);
+    t.truthy(res.error, 'error is set');
 });
