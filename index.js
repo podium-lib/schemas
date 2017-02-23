@@ -50,25 +50,44 @@ const resourceEntry = Joi
     })
     .unknown(false);
 
+const resourceMountEntry = Joi
+    .object().keys({
+        path: Joi
+            .string()
+            .required(),
+        method: Joi
+            .string()
+            .default('GET')
+            .optional(),
+        params: Joi.array()
+            .optional()
+            .items(Joi.string()),
+        resolver: Joi.func(),
+    })
+    .unknown(false);
+const maxAge = Joi
+    .number()
+    .unit('seconds')
+    .min(0)
+    .max(60 * 60 * 60)
+    .required();
+
+const maxDataAge = Joi
+    .number()
+    .unit('seconds')
+    .min(0)
+    .max(60 * 60 * 60)
+    .less(Joi.ref('maxAge'))
+    .optional();
+
 const metadataSchema = Joi
     .object().keys({
         fallbacks: Joi
             .object()
             .pattern(/.*/, contentSchema),
         fallback: contentSchema,
-        maxDataAge: Joi
-            .number()
-            .unit('seconds')
-            .min(0)
-            .max(60 * 60 * 60)
-            .less(Joi.ref('maxAge'))
-            .optional(),
-        maxAge: Joi
-            .number()
-            .unit('seconds')
-            .min(0)
-            .max(60 * 60 * 60)
-            .required(),
+        maxDataAge,
+        maxAge,
         resources: Joi
             .array()
             .items(resourceEntry)
@@ -86,5 +105,20 @@ const responseSchema = Joi
     })
     .unknown(false);
 
+const hostOptionsSchema = Joi.object().keys({
+    id: Joi.string().required(),
+    version: Joi.string().required(),
+    maxAge,
+    maxDataAge,
+    args: Joi.object().optional(),
+    fallbackArgs: Joi.object().optional(), // fixme todo! to think this through
+    entrypoints: Joi.array().items(Joi.string()),
+    resources: Joi.array()
+        .default([])
+        .items(resourceMountEntry),
+    render: Joi.func().required(),
+});
+
+module.exports.hostOptionsSchema = hostOptionsSchema;
 module.exports.metadataSchema = metadataSchema;
 module.exports.responseSchema = responseSchema;
