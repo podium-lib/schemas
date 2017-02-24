@@ -88,6 +88,9 @@ const metadataSchema = Joi
             .object()
             .pattern(/.*/, contentSchema),
         fallback: contentSchema,
+        variations: Joi
+            .object()
+            .optional(),
         maxDataAge,
         maxAge,
         resources: Joi
