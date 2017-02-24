@@ -42,7 +42,8 @@ const resourceEntry = Joi
             .required(),
         method: Joi
             .string()
-            .default('GET')
+            .default('get')
+            .lowercase()
             .optional(),
         params: Joi.array()
             .optional()
@@ -57,7 +58,8 @@ const resourceMountEntry = Joi
             .required(),
         method: Joi
             .string()
-            .default('GET')
+            .default('get')
+            .lowercase()
             .optional(),
         params: Joi.array()
             .optional()
