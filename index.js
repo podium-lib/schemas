@@ -108,16 +108,22 @@ const responseSchema = Joi
 const hostOptionsSchema = Joi.object().keys({
     id: Joi.string().required(),
     version: Joi.string().required(),
-    maxAge,
-    maxDataAge,
-    args: Joi.object().optional(),
-    fallbackArgs: Joi.object().optional(), // fixme todo! to think this through
+    options: Joi.object()
+        .keys({
+            maxAge,
+            maxDataAge,
+        })
+        .default({}),
+    variants: Joi.object().default({}),
     entrypoints: Joi.array().items(Joi.string()),
     resources: Joi.array()
         .default([])
         .items(resourceMountEntry),
+    resolver: Joi.func()
+        .default((req, options) => Promise.resolve({ options })),
     render: Joi.func().required(),
-});
+})
+.unknown(false);
 
 module.exports.hostOptionsSchema = hostOptionsSchema;
 module.exports.metadataSchema = metadataSchema;
