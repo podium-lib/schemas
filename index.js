@@ -9,6 +9,13 @@ const Joi = require('joi');
 const contentSchema = Joi
     .object().keys({
         html: Joi.string().required(),
+        assetUris: Joi
+            .array()
+            .items(Joi
+                .string()
+                .uri()
+                .required())
+            .optional(),
         assetId: Joi.string().optional(),
         // fixme: this should be a collection of assets presumably?
         // Keepeing it like this to unbreak other packages. In future,
@@ -133,3 +140,4 @@ const hostOptionsSchema = Joi.object().keys({
 module.exports.hostOptionsSchema = hostOptionsSchema;
 module.exports.metadataSchema = metadataSchema;
 module.exports.responseSchema = responseSchema;
+module.exports.contentSchema = contentSchema;
