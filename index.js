@@ -6,6 +6,30 @@
 
 const Joi = require('joi');
 
+const contextSchema = Joi
+    .object().keys({
+        domain: Joi.string().required(),
+        deviceType: Joi.string().allow('mobile', 'tablet', 'desktop')
+            .required(),
+        query: Joi.object(),
+        token: Joi.string().optional(),
+        userId: Joi.string().optional(),
+        sessionId: Joi.string().optional(),
+        locale: Joi.string().optional()
+            .default('nb-NO'),
+        cdnHost: Joi.string().optional()
+            .default('/'),
+        extras: Joi.object()
+            .keys({
+                cdnHost: Joi.string().optional(),
+            })
+            .unknown(true),
+        traceId: Joi.string().optional(),
+        payload: Joi.any(), //fixme decide what to expect here
+
+    })
+    .unknown(false);
+
 const contentSchema = Joi
     .object().keys({
         html: Joi.string().required(),
@@ -137,6 +161,7 @@ const hostOptionsSchema = Joi.object().keys({
 })
 .unknown(false);
 
+module.exports.contextSchema = contextSchema;
 module.exports.hostOptionsSchema = hostOptionsSchema;
 module.exports.metadataSchema = metadataSchema;
 module.exports.responseSchema = responseSchema;
