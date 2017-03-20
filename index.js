@@ -118,8 +118,7 @@ const metadataSchema = Joi
         fallbacks: Joi
             .object()
             .pattern(/.*/, contentSchema),
-        fallback: contentSchema,
-        variations: Joi
+        fallbackVariations: Joi
             .object()
             .optional(),
         maxDataAge,
@@ -129,7 +128,6 @@ const metadataSchema = Joi
             .items(resourceEntry)
             .optional(),
     })
-    .xor('fallback', 'fallbacks')
     .unknown(false);
 
 const responseSchema = Joi
@@ -150,7 +148,6 @@ const hostOptionsSchema = Joi.object().keys({
             maxDataAge,
         })
         .default({}),
-    variants: Joi.object().default({}),
     entrypoints: Joi.array().items(Joi.string()),
     resources: Joi.array()
         .default([])
@@ -158,6 +155,8 @@ const hostOptionsSchema = Joi.object().keys({
     resolver: Joi.func()
         .default((req, options) => Promise.resolve({ options })),
     render: Joi.func().required(),
+    fallbackVariations: Joi.object().default({}),
+    fallback: Joi.func().required(),
 })
 .unknown(false);
 
