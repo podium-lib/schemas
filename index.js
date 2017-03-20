@@ -32,7 +32,8 @@ const contextSchema = Joi
 
 const contentSchema = Joi
     .object().keys({
-        html: Joi.string().required(),
+        html: Joi.required(), // fixme: should be string, data from podlets are wrong
+        debug: Joi.optional(), // fixme: should this be allowed? what is type?
         assetUris: Joi
             .array()
             .items(Joi
