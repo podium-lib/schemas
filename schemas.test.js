@@ -56,7 +56,9 @@ test('allow maxDataAge and maxAge', t => {
             html: 'tralla',
         },
         metadata: {
-            fallback: { html: 'manifest fallback' },
+            fallbacks: {
+                default: { html: 'manifest fallback' },
+            },
             maxDataAge: 10,
             maxAge: 20,
         },
@@ -97,7 +99,7 @@ test('accept arguments key to fallbacks', t => {
 test('accept empty arguments key to fallbacks', t => {
     const obj = {
         fallbacks: {
-            '': {
+            default: {
                 html: '<h1>Sup</h1>',
             },
         },
@@ -107,11 +109,10 @@ test('accept empty arguments key to fallbacks', t => {
     t.falsy(res.error, 'error is not set');
 });
 
-test('enforce content in fallabck', t => {
+test('enforce content in fallback', t => {
     const obj = {
         fallbacks: {
-            '': {
-            },
+            default: {},
         },
         maxAge: 60,
     };
