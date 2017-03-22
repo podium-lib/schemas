@@ -2,7 +2,7 @@
 
 const test = require('ava');
 const Joi = require('joi');
-const { responseSchema, metadataSchema } = require('./index');
+const { responseSchema, metadataSchema } = require('../');
 
 test('responseSchema smoketest 1', t => {
     const obj = {};

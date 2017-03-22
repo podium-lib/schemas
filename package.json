@@ -1,8 +1,11 @@
 {
   "name": "@podium/schemas",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.1",
   "license": "",
-  "main": "./index.js",
+  "files": [
+    "lib"
+  ],
+  "main": "./lib/index.js",
   "scripts": {
     "test": "ava",
     "test:watch": "ava --watch"

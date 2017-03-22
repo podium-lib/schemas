@@ -2,7 +2,7 @@
 
 const test = require('ava');
 const Joi = require('joi');
-const { contentSchema } = require('./index');
+const { contentSchema } = require('../');
 
 test('assetUris: works when no asset URIs', t => {
     const obj = {
