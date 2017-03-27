@@ -8,7 +8,8 @@ test('assetUris: works when no asset URIs', t => {
     const obj = {
         html: 'asdf',
     };
-    Joi.attempt(obj, contentSchema);
+
+    t.notThrows(() => Joi.attempt(obj, contentSchema));
 });
 
 test('assetUris: breaks if empty list of asset URIs', t => {
