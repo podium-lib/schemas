@@ -47,7 +47,6 @@ test('responseSchema smoketest 5', t => {
     t.truthy(res.error, 'error is set');
 });
 
-
 test('allow maxDataAge and maxAge', t => {
     const obj = {
         id: 'lol',
