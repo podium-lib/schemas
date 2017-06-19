@@ -31,6 +31,7 @@ test('responseSchema smoketest 4', t => {
     const obj = {
         id: 'lol',
         version: 'lal',
+        hash: 'lal',
         data: { html: 'asdf' },
     };
     const res = Joi.validate(obj, responseSchema);
@@ -51,6 +52,7 @@ test('allow maxDataAge and maxAge', t => {
     const obj = {
         id: 'lol',
         version: 'lal',
+        hash: 'lal',
         data: {
             html: 'tralla',
         },
