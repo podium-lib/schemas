@@ -14,7 +14,7 @@
     "registry": "http://npm.finntech.no/"
   },
   "dependencies": {
-    "joi": "^10.2.2"
+    "joi": "^10.3.0"
   },
   "devDependencies": {
     "ava": "^0.20.0"
