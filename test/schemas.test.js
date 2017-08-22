@@ -2,7 +2,7 @@
 
 const test = require('ava');
 const Joi = require('joi');
-const { contextSchema, responseSchema, metadataSchema } = require('../');
+const { responseSchema, metadataSchema } = require('../');
 
 test('responseSchema smoketest 1', t => {
     const obj = {};
@@ -119,14 +119,4 @@ test('enforce content in fallback', t => {
     };
     const res = Joi.validate(obj, metadataSchema);
     t.truthy(res.error, 'error is set');
-});
-
-test('should be valid context schema', t => {
-    const obj = {
-        domain: 'finn.no',
-        baseUrl: 'https://www.finn.no',
-        deviceType: 'mobile',
-    };
-    const res = Joi.validate(obj, contextSchema);
-    t.falsy(res.error, 'error is not set');
 });
