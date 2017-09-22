@@ -8,7 +8,7 @@
   "main": "./lib/index.js",
   "scripts": {
     "test": "ava",
-    "test:watch": "ava --watch"
+    "lint": "eslint ."
   },
   "publishConfig": {
     "registry": "http://npm.finntech.no/"
@@ -17,6 +17,10 @@
     "joi": "^11.0.3"
   },
   "devDependencies": {
-    "ava": "^0.22.0"
+    "ava": "^0.22.0",
+    "eslint": "^4.1.1",
+    "eslint-config-finn": "^2.0.0",
+    "eslint-config-finn-prettier": "^3.0.0",
+    "prettier": "^1.5.2"
   }
 }
