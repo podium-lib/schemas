@@ -1,33 +1,32 @@
 'use strict';
 
-const test = require('ava');
 const Joi = require('joi');
 const { responseSchema, metadataSchema } = require('../');
 
-test('responseSchema smoketest 1', t => {
+test('responseSchema smoketest 1', () => {
     const obj = {};
     const res = Joi.validate(obj, responseSchema);
-    t.true(res.error.isJoi);
+    expect(res.error.isJoi).toBe(true);
 });
 
-test('responseSchema smoketest 2', t => {
+test('responseSchema smoketest 2', () => {
     const obj = {};
     const res = Joi.validate(obj, responseSchema);
-    t.truthy(res.error, 'error property is set');
-    t.true(res.error.isJoi, 'object declares itself as joi error');
+    expect(res.error).toBeTruthy();
+    expect(res.error.isJoi).toBe(true);
 });
 
-test('responseSchema smoketest 3', t => {
+test('responseSchema smoketest 3', () => {
     const obj = {
         id: 'lol',
         version: 'lal',
     };
     const res = Joi.validate(obj, responseSchema);
-    t.truthy(res.error, 'error property is set');
-    t.true(res.error.isJoi, 'object declares itself as joi error');
+    expect(res.error).toBeTruthy();
+    expect(res.error.isJoi).toBe(true);
 });
 
-test('responseSchema smoketest 4', t => {
+test('responseSchema smoketest 4', () => {
     const obj = {
         id: 'lol',
         version: 'lal',
@@ -35,20 +34,20 @@ test('responseSchema smoketest 4', t => {
         data: { html: 'asdf' },
     };
     const res = Joi.validate(obj, responseSchema);
-    t.falsy(res.error, 'error property is not set');
+    expect(res.error).toBeFalsy();
 });
 
-test('responseSchema smoketest 5', t => {
+test('responseSchema smoketest 5', () => {
     const obj = {
         id: 'lol',
         version: 'lal',
         data: {},
     };
     const res = Joi.validate(obj, responseSchema);
-    t.truthy(res.error, 'error is set');
+    expect(res.error).toBeTruthy();
 });
 
-test('allow maxDataAge and maxAge', t => {
+test('allow maxDataAge and maxAge', () => {
     const obj = {
         id: 'lol',
         version: 'lal',
@@ -65,10 +64,10 @@ test('allow maxDataAge and maxAge', t => {
         },
     };
     const res = Joi.validate(obj, responseSchema);
-    t.falsy(res.error, 'error is not set');
+    expect(res.error).toBeFalsy();
 });
 
-test('reject maxDataAge when above maxAge', t => {
+test('reject maxDataAge when above maxAge', () => {
     const obj = {
         id: 'lol',
         version: 'lal',
@@ -81,10 +80,10 @@ test('reject maxDataAge when above maxAge', t => {
         },
     };
     const res = Joi.validate(obj, responseSchema);
-    t.truthy(res.error, 'error is set');
+    expect(res.error).toBeTruthy();
 });
 
-test('accept arguments key to fallbacks', t => {
+test('accept arguments key to fallbacks', () => {
     const obj = {
         fallbacks: {
             sup: {
@@ -94,10 +93,10 @@ test('accept arguments key to fallbacks', t => {
         maxAge: 60,
     };
     const res = Joi.validate(obj, metadataSchema);
-    t.falsy(res.error, 'error is not set');
+    expect(res.error).toBeFalsy();
 });
 
-test('accept empty arguments key to fallbacks', t => {
+test('accept empty arguments key to fallbacks', () => {
     const obj = {
         fallbacks: {
             default: {
@@ -107,10 +106,10 @@ test('accept empty arguments key to fallbacks', t => {
         maxAge: 60,
     };
     const res = Joi.validate(obj, metadataSchema);
-    t.falsy(res.error, 'error is not set');
+    expect(res.error).toBeFalsy();
 });
 
-test('enforce content in fallback', t => {
+test('enforce content in fallback', () => {
     const obj = {
         fallbacks: {
             default: {},
@@ -118,5 +117,5 @@ test('enforce content in fallback', t => {
         maxAge: 60,
     };
     const res = Joi.validate(obj, metadataSchema);
-    t.truthy(res.error, 'error is set');
+    expect(res.error).toBeTruthy();
 });

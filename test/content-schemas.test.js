@@ -1,51 +1,50 @@
 'use strict';
 
-const test = require('ava');
 const Joi = require('joi');
 const { contentSchema } = require('../');
 
-test('assetUris: works when no asset URIs', t => {
+test('assetUris: works when no asset URIs', () => {
     const obj = {
         html: 'asdf',
     };
 
-    t.notThrows(() => Joi.attempt(obj, contentSchema));
+    expect(() => Joi.attempt(obj, contentSchema)).not.toThrowError();
 });
 
-test('assetUris: breaks if empty list of asset URIs', t => {
+test('assetUris: breaks if empty list of asset URIs', () => {
     const obj = {
         html: 'asdf',
         assetUris: [],
     };
     const res = Joi.validate(obj, contentSchema);
-    t.truthy(res.error, 'error property is set');
-    t.true(res.error.isJoi, 'object declares itself as joi error');
+    expect(res.error).toBeTruthy();
+    expect(res.error.isJoi).toBe(true);
 });
 
-test('assetUris: breaks when malformed URI', t => {
+test('assetUris: breaks when malformed URI', () => {
     const obj = {
         html: 'asdf',
         assetUris: ['lofoo'],
     };
     const res = Joi.validate(obj, contentSchema);
-    t.truthy(res.error, 'error property is set');
-    t.true(res.error.isJoi, 'object declares itself as joi error');
+    expect(res.error).toBeTruthy();
+    expect(res.error.isJoi).toBe(true);
 });
 
-test('assetUris: works with single URI', t => {
+test('assetUris: works with single URI', () => {
     const obj = {
         html: 'asdf',
         assetUris: ['http://cdn.example.org'],
     };
     const res = Joi.validate(obj, contentSchema);
-    t.falsy(res.error, 'error property is set');
+    expect(res.error).toBeFalsy();
 });
 
-test('assetUris: works with multiple URIs', t => {
+test('assetUris: works with multiple URIs', () => {
     const obj = {
         html: 'asdf',
         assetUris: ['http://cdn.example.org/1', 'http://cdn.example.org/2'],
     };
     const res = Joi.validate(obj, contentSchema);
-    t.falsy(res.error, 'error property is set');
+    expect(res.error).toBeFalsy();
 });
