@@ -6,21 +6,10 @@
     "lib"
   ],
   "main": "./lib/index.js",
-  "scripts": {
-    "test": "jest",
-    "lint": "eslint ."
-  },
   "publishConfig": {
     "registry": "http://npm.finntech.no/"
   },
   "dependencies": {
     "joi": "^11.0.3"
-  },
-  "devDependencies": {
-    "jest": "^21.2.1"
-  },
-  "jest": {
-    "clearMocks": true,
-    "testEnvironment": "node"
   }
 }
