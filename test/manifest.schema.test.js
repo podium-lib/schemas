@@ -199,3 +199,16 @@ test('manifest.schema - schema contains unknown keys - should strip unknown keys
     const res = Joi.validate(schema, manifest.schema);
     expect(res.value.banan).toBeFalsy();
 });
+
+test('manifest.schema - optional fields not set - should set defaults', () => {
+    const schema = {
+        name: 'foo-bar',
+        version: '1.0.0',
+        content: 'http://www.google.com/podlet',
+    };
+    const res = Joi.validate(schema, manifest.schema);
+    expect(res.value.fallback).toBe('');
+    expect(res.value.team).toBe('');
+    expect(res.value.assets.css).toBe('');
+    expect(res.value.assets.js).toBe('');
+});
