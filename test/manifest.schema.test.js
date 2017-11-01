@@ -8,7 +8,7 @@ const Joi = require('joi');
  */
 
 test('manifest.uri - contains absolute URI with http scheme - should not return error', () => {
-    const res = Joi.validate('http://www.google.com/metadata', manifest.uri);
+    const res = Joi.validate('http://www.finn.no/metadata', manifest.uri);
     expect(res.error).toBeFalsy();
 });
 
@@ -18,7 +18,7 @@ test('manifest.uri - contains relative URI - should not return error', () => {
 });
 
 test('manifest.uri - contains illegal URI scheme - should return error', () => {
-    const res = Joi.validate('gopher://www.google.com/metadata', manifest.uri);
+    const res = Joi.validate('gopher://www.finn.no/metadata', manifest.uri);
     expect(res.error).toBeTruthy();
 });
 
@@ -79,9 +79,19 @@ test('manifest._version - has trailing spaces - should trim trailingspaces', () 
  * ._content
  */
 
-test('manifest._content - contains String value - should not return error', () => {
-    const res = Joi.validate('<section>banan</section>', manifest._content);
+test('manifest._content - contains absolute URI value - should not return error', () => {
+    const res = Joi.validate('http://www.finn.no/content', manifest._content);
     expect(res.error).toBeFalsy();
+});
+
+test('manifest._content - contains relative URI value - should not return error', () => {
+    const res = Joi.validate('/content', manifest._content);
+    expect(res.error).toBeFalsy();
+});
+
+test('manifest._content - contains String value - should return error', () => {
+    const res = Joi.validate('<section>banan</section>', manifest._content);
+    expect(res.error).toBeTruthy();
 });
 
 test('manifest._content - empty - should return error', () => {
@@ -98,9 +108,19 @@ test('manifest._content - not String - should return error', () => {
  * ._fallback
  */
 
-test('manifest._fallback - contains String value - should not return error', () => {
-    const res = Joi.validate('<section>banan</section>', manifest._fallback);
+test('manifest._fallback - contains absolute URI value - should not return error', () => {
+    const res = Joi.validate('http://www.finn.no/fallback', manifest._fallback);
     expect(res.error).toBeFalsy();
+});
+
+test('manifest._fallback - contains relative URI value - should not return error', () => {
+    const res = Joi.validate('/fallback', manifest._fallback);
+    expect(res.error).toBeFalsy();
+});
+
+test('manifest._fallback - contains String value - should return error', () => {
+    const res = Joi.validate('<section>banan</section>', manifest._fallback);
+    expect(res.error).toBeTruthy();
 });
 
 test('manifest._fallback - empty - should return error', () => {
@@ -118,7 +138,7 @@ test('manifest._fallback - not String - should return error', () => {
  */
 
 test('manifest._js - contains legal URI value - should not return error', () => {
-    const res = Joi.validate('http://www.google.com/js', manifest._js);
+    const res = Joi.validate('http://www.finn.no/js', manifest._js);
     expect(res.error).toBeFalsy();
 });
 
@@ -132,7 +152,7 @@ test('manifest._js - empty - should return error', () => {
  */
 
 test('manifest._css - contains legal URI value - should not return error', () => {
-    const res = Joi.validate('http://www.google.com/css', manifest._css);
+    const res = Joi.validate('http://www.finn.no/css', manifest._css);
     expect(res.error).toBeFalsy();
 });
 
@@ -168,11 +188,11 @@ test('manifest.schema - contains valid schema - should not return error', () => 
     const schema = {
         name: 'foo-bar',
         version: '1.0.0',
-        content: 'http://www.google.com/podlet',
-        fallback: 'http://www.google.com/fallback',
+        content: 'http://www.finn.no/content',
+        fallback: 'http://www.finn.no/fallback',
         assets: {
-            js: 'http://www.google.com/podlet/js',
-            css: 'http://www.google.com/podlet/css',
+            js: 'http://www.finn.no/podlet/js',
+            css: 'http://www.finn.no/podlet/css',
         },
         team: 'The A-Team',
     };
@@ -193,7 +213,7 @@ test('manifest.schema - schema contains unknown keys - should strip unknown keys
     const schema = {
         name: 'foo-bar',
         version: '1.0.0',
-        content: 'http://www.google.com/podlet',
+        content: 'http://www.finn.no/content',
         banan: 'likør',
     };
     const res = Joi.validate(schema, manifest.schema);
@@ -204,7 +224,7 @@ test('manifest.schema - optional fields not set - should set defaults', () => {
     const schema = {
         name: 'foo-bar',
         version: '1.0.0',
-        content: 'http://www.google.com/podlet',
+        content: 'http://www.finn.no/content',
     };
     const res = Joi.validate(schema, manifest.schema);
     expect(res.value.fallback).toBe('');
