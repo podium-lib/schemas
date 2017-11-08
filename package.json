@@ -2,9 +2,7 @@
   "name": "@podium/schemas",
   "version": "2.0.0-alpha.8",
   "license": "SEE LICENSE IN LICENSE",
-  "files": [
-    "lib"
-  ],
+  "files": ["lib"],
   "main": "./lib/index.js",
   "publishConfig": {
     "registry": "http://npm.finntech.no/"
