@@ -8,6 +8,6 @@
     "registry": "http://npm.finntech.no/"
   },
   "dependencies": {
-    "joi": "^11.0.3"
+    "joi": "^13.0.1"
   }
 }
