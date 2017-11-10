@@ -1,6 +1,6 @@
 {
   "name": "@podium/schemas",
-  "version": "2.0.0-alpha.8",
+  "version": "2.0.0-alpha.9",
   "license": "SEE LICENSE IN LICENSE",
   "files": ["lib"],
   "main": "./lib/index.js",
