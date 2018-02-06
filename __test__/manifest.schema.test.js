@@ -23,160 +23,164 @@ test('manifest.uri - contains illegal URI scheme - should return error', () => {
 });
 
 /**
- * ._name
+ * .name
  */
 
-test('manifest._name - contains legal characters - should not return error', () => {
-    const res = Joi.validate('123-FOO_bar', manifest._name);
+test('manifest.name - contains legal characters - should not return error', () => {
+    const res = Joi.validate('123-FOO_bar', manifest.name);
     expect(res.error).toBeFalsy();
 });
 
-test('manifest._name - empty - should return error', () => {
-    const res = Joi.validate('', manifest._name);
+test('manifest.name - empty - should return error', () => {
+    const res = Joi.validate('', manifest.name);
     expect(res.error).toBeTruthy();
 });
 
-test('manifest._name - contains illegal characters - should return error', () => {
-    const res = Joi.validate('foo~bar', manifest._name);
+test('manifest.name - contains illegal characters - should return error', () => {
+    const res = Joi.validate('foo~bar', manifest.name);
     expect(res.error).toBeTruthy();
 });
 
-test('manifest._name - not String - should return error', () => {
-    const res = Joi.validate(123, manifest._name);
+test('manifest.name - not String - should return error', () => {
+    const res = Joi.validate(123, manifest.name);
     expect(res.error).toBeTruthy();
 });
 
-test('manifest._name - has trailing spaces - should trim trailingspaces', () => {
-    const res = Joi.validate(' abc ', manifest._name);
+test('manifest.name - has trailing spaces - should trim trailingspaces', () => {
+    const res = Joi.validate(' abc ', manifest.name);
     expect(res.value).toBe('abc');
 });
 
 /**
- * ._version
+ * .version
  */
 
-test('manifest._version - contains String value - should not return error', () => {
-    const res = Joi.validate('1.0.0-beta-1', manifest._version);
+test('manifest.version - contains String value - should not return error', () => {
+    const res = Joi.validate('1.0.0-beta-1', manifest.version);
     expect(res.error).toBeFalsy();
 });
 
-test('manifest._version - empty - should return error', () => {
-    const res = Joi.validate('', manifest._version);
+test('manifest.version - empty - should return error', () => {
+    const res = Joi.validate('', manifest.version);
     expect(res.error).toBeTruthy();
 });
 
-test('manifest._version - not String - should return error', () => {
-    const res = Joi.validate(123, manifest._version);
+test('manifest.version - not String - should return error', () => {
+    const res = Joi.validate(123, manifest.version);
     expect(res.error).toBeTruthy();
 });
 
-test('manifest._version - has trailing spaces - should trim trailingspaces', () => {
-    const res = Joi.validate(' 1.0.0-beta-1 ', manifest._version);
+test('manifest.version - has trailing spaces - should trim trailingspaces', () => {
+    const res = Joi.validate(' 1.0.0-beta-1 ', manifest.version);
     expect(res.value).toBe('1.0.0-beta-1');
 });
 
 /**
- * ._content
+ * .content
  */
 
-test('manifest._content - contains absolute URI value - should not return error', () => {
-    const res = Joi.validate('http://www.finn.no/content', manifest._content);
+test('manifest.content - contains absolute URI value - should not return error', () => {
+    const res = Joi.validate('http://www.finn.no/content', manifest.content);
     expect(res.error).toBeFalsy();
 });
 
-test('manifest._content - contains relative URI value - should not return error', () => {
-    const res = Joi.validate('/content', manifest._content);
+test('manifest.content - contains relative URI value - should not return error', () => {
+    const res = Joi.validate('/content', manifest.content);
     expect(res.error).toBeFalsy();
 });
 
-test('manifest._content - contains String value - should return error', () => {
-    const res = Joi.validate('<section>banan</section>', manifest._content);
+test('manifest.content - contains String value - should return error', () => {
+    const res = Joi.validate('<section>banan</section>', manifest.content);
     expect(res.error).toBeTruthy();
 });
 
-test('manifest._content - empty - should return error', () => {
-    const res = Joi.validate('', manifest._content);
+test('manifest.content - empty - should return error', () => {
+    const res = Joi.validate('', manifest.content);
     expect(res.error).toBeTruthy();
 });
 
-test('manifest._content - not String - should return error', () => {
-    const res = Joi.validate(123, manifest._content);
+test('manifest.content - not String - should return error', () => {
+    const res = Joi.validate(123, manifest.content);
     expect(res.error).toBeTruthy();
 });
 
 /**
- * ._fallback
+ * .fallback
  */
 
-test('manifest._fallback - contains absolute URI value - should not return error', () => {
-    const res = Joi.validate('http://www.finn.no/fallback', manifest._fallback);
+test('manifest.fallback - contains absolute URI value - should not return error', () => {
+    const res = Joi.validate('http://www.finn.no/fallback', manifest.fallback);
     expect(res.error).toBeFalsy();
 });
 
-test('manifest._fallback - contains relative URI value - should not return error', () => {
-    const res = Joi.validate('/fallback', manifest._fallback);
+test('manifest.fallback - contains relative URI value - should not return error', () => {
+    const res = Joi.validate('/fallback', manifest.fallback);
     expect(res.error).toBeFalsy();
 });
 
-test('manifest._fallback - contains String value - should return error', () => {
-    const res = Joi.validate('<section>banan</section>', manifest._fallback);
+test('manifest.fallback - empty - should not return error', () => {
+    const res = Joi.validate('', manifest.fallback);
+    expect(res.value).toBe('');
+    expect(res.error).toBeFalsy();
+});
+
+test('manifest.fallback - contains String value - should return error', () => {
+    const res = Joi.validate('<section>banan</section>', manifest.fallback);
     expect(res.error).toBeTruthy();
 });
 
-test('manifest._fallback - empty - should return error', () => {
-    const res = Joi.validate('', manifest._fallback);
-    expect(res.error).toBeTruthy();
-});
-
-test('manifest._fallback - not String - should return error', () => {
-    const res = Joi.validate(123, manifest._fallback);
+test('manifest.fallback - not String - should return error', () => {
+    const res = Joi.validate(123, manifest.fallback);
     expect(res.error).toBeTruthy();
 });
 
 /**
- * ._js
+ * .js
  */
 
-test('manifest._js - contains legal URI value - should not return error', () => {
-    const res = Joi.validate('http://www.finn.no/js', manifest._js);
+test('manifest.js - contains legal URI value - should not return error', () => {
+    const res = Joi.validate('http://www.finn.no/js', manifest.js);
     expect(res.error).toBeFalsy();
 });
 
-test('manifest._js - empty - should return error', () => {
-    const res = Joi.validate('', manifest._js);
-    expect(res.error).toBeTruthy();
+test('manifest.js - empty - should not return error', () => {
+    const res = Joi.validate('', manifest.js);
+    expect(res.value).toBe('');
+    expect(res.error).toBeFalsy();
 });
 
 /**
- * ._css
+ * .css
  */
 
-test('manifest._css - contains legal URI value - should not return error', () => {
-    const res = Joi.validate('http://www.finn.no/css', manifest._css);
+test('manifest.css - contains legal URI value - should not return error', () => {
+    const res = Joi.validate('http://www.finn.no/css', manifest.css);
     expect(res.error).toBeFalsy();
 });
 
-test('manifest._css - empty - should return error', () => {
-    const res = Joi.validate('', manifest._css);
-    expect(res.error).toBeTruthy();
+test('manifest.css - empty - should not return error', () => {
+    const res = Joi.validate('', manifest.css);
+    expect(res.value).toBe('');
+    expect(res.error).toBeFalsy();
 });
 
 /**
- * ._team
+ * .team
  */
 
-test('manifest._team - contains String value - should not return error', () => {
-    const res = Joi.validate('Bananas', manifest._team);
+test('manifest.team - contains String value - should not return error', () => {
+    const res = Joi.validate('Bananas', manifest.team);
     expect(res.error).toBeFalsy();
 });
 
-test('manifest._team - empty - should return error', () => {
-    const res = Joi.validate('', manifest._team);
-    expect(res.error).toBeTruthy();
+test('manifest.team - empty - should not return error', () => {
+    const res = Joi.validate('', manifest.team);
+    expect(res.value).toBe('');
+    expect(res.error).toBeFalsy();
 });
 
-test('manifest._team - not String - should return error', () => {
-    const res = Joi.validate(123, manifest._team);
+test('manifest.team - not String - should return error', () => {
+    const res = Joi.validate(123, manifest.team);
     expect(res.error).toBeTruthy();
 });
 
