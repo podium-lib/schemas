@@ -21,11 +21,11 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
-    "joi": "^13.0.1"
+    "joi": "^13.1.2"
   },
   "devDependencies": {
     "jest": "^22.1.4",
-    "eslint": "^4.16.0",
+    "eslint": "^4.17.0",
     "eslint-config-finn": "^3.0.0",
     "eslint-config-finn-prettier": "^3.0.1",
     "prettier": "^1.10.2"
