@@ -165,6 +165,120 @@ test('manifest.css - empty - should not return error', () => {
 });
 
 /**
+ * .proxyItem
+ */
+
+test('manifest.proxyItem - not object - should return error', () => {
+    const res = Joi.validate('foo', manifest.proxyItem);
+    expect(res.error).toBeTruthy();
+});
+
+test('manifest.proxyItem - no pathname - should return error', () => {
+    const res = Joi.validate(
+        {
+            href: 'http://www.finn.no/foo',
+        },
+        manifest.proxyItem
+    );
+    expect(res.error).toBeTruthy();
+});
+
+test('manifest.proxyItem - no href - should return error', () => {
+    const res = Joi.validate(
+        {
+            pathname: '/public',
+        },
+        manifest.proxyItem
+    );
+    expect(res.error).toBeTruthy();
+});
+
+test('manifest.proxyItem - legal pathname and href - should not return error', () => {
+    const res = Joi.validate(
+        {
+            pathname: '/public',
+            href: 'http://www.finn.no/foo',
+        },
+        manifest.proxyItem
+    );
+    expect(res.error).toBeFalsy();
+});
+
+test('manifest.proxyItem - illegal href - should return error', () => {
+    const res = Joi.validate(
+        {
+            pathname: '/public',
+            href: 'htXXtp://www.finn.no /foo',
+        },
+        manifest.proxyItem
+    );
+    expect(res.error).toBeTruthy();
+});
+
+test('manifest.proxyItem - illegal pathname - should return error', () => {
+    const res = Joi.validate(
+        {
+            pathname: 'http://www.finn.no/foo',
+            href: 'http://www.finn.no/foo',
+        },
+        manifest.proxyItem
+    );
+    expect(res.error).toBeTruthy();
+});
+
+test('manifest.proxyItem - contain unknown values - should strip unknown values', () => {
+    const res = Joi.validate(
+        {
+            pathname: '/public',
+            href: 'http://www.finn.no/foo',
+            foo: 'bar',
+        },
+        manifest.proxyItem
+    );
+    expect(res.value).toEqual({
+        pathname: '/public',
+        href: 'http://www.finn.no/foo',
+    });
+});
+
+/**
+ * .proxy
+ */
+
+test('manifest.proxy - empty array - should not return error', () => {
+    const res = Joi.validate([], manifest.proxy);
+    expect(res.error).toBeFalsy();
+});
+
+test('manifest.proxy - not array - should return error', () => {
+    const res = Joi.validate('foo', manifest.proxy);
+    expect(res.error).toBeTruthy();
+});
+
+test('manifest.proxy - items are objects - should not return error', () => {
+    const item = {
+        pathname: '/public',
+        href: 'http://www.finn.no/foo',
+    };
+    const res = Joi.validate([item], manifest.proxy);
+    expect(res.error).toBeFalsy();
+});
+
+test('manifest.proxy - items contain non objects - should return error', () => {
+    const res = Joi.validate(['foo', 123], manifest.proxy);
+    expect(res.error).toBeTruthy();
+});
+
+test('manifest.proxy - more than 4 items - should return error', () => {
+    const item = {
+        pathname: '/public',
+        href: 'http://www.finn.no/foo',
+    };
+    const res = Joi.validate([item, item, item, item, item], manifest.proxy);
+    expect(res.error).toBeTruthy();
+});
+
+/**
  * .team
  */
 
@@ -198,6 +312,12 @@ test('manifest.schema - contains valid schema - should not return error', () => 
             js: 'http://www.finn.no/podlet/js',
             css: 'http://www.finn.no/podlet/css',
         },
+        proxy: [
+            {
+                pathname: '/public',
+                href: 'http://www.finn.no/foo',
+            },
+        ],
         team: 'The A-Team',
     };
     const res = Joi.validate(schema, manifest.schema);
@@ -235,4 +355,5 @@ test('manifest.schema - optional fields not set - should set defaults', () => {
     expect(res.value.team).toBe('');
     expect(res.value.assets.css).toBe('');
     expect(res.value.assets.js).toBe('');
+    expect(res.value.proxy).toEqual([]);
 });
