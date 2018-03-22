@@ -12,6 +12,11 @@ test('manifest.uri - contains absolute URI with http scheme - should not return 
     expect(res.error).toBeFalsy();
 });
 
+test('manifest.uri - contains absolute URI with https scheme - should not return error', () => {
+    const res = Joi.validate('https://www.finn.no/metadata', manifest.uri);
+    expect(res.error).toBeFalsy();
+});
+
 test('manifest.uri - contains relative URI - should not return error', () => {
     const res = Joi.validate('/metadata', manifest.uri);
     expect(res.error).toBeFalsy();
