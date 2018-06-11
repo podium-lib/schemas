@@ -1,13 +1,47 @@
 {
   "name": "@podium/schemas",
-  "version": "2.0.0",
+  "version": "2.1.0-beta.5",
   "license": "SEE LICENSE IN LICENSE",
-  "files": ["lib"],
+  "repository": {
+    "type": "git",
+    "url": "git@github.schibsted.io:Podium/schema.git"
+  },
+  "files": [
+    "lib"
+  ],
   "main": "./lib/index.js",
   "publishConfig": {
     "registry": "http://npm.finntech.no/"
   },
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "test": "jest",
+    "test:verbose": "jest --verbose",
+    "test:coverage": "jest --coverage"
+  },
   "dependencies": {
-    "joi": "^13.0.1"
+    "joi": "^13.1.2"
+  },
+  "devDependencies": {
+    "jest": "^22.1.4",
+    "eslint": "^4.19.1",
+    "eslint-config-finn": "^3.0.0",
+    "eslint-config-finn-prettier": "^3.0.1",
+    "prettier": "^1.10.2"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "test/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
+    "testEnvironment": "node"
   }
 }
