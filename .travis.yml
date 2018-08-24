@@ -42,6 +42,8 @@ branches:
    only:
    - master
 
+dist: trusty
+
 env: CXX=g++-4.8
 
 addons:
