@@ -4,15 +4,12 @@
   "license": "SEE LICENSE IN LICENSE",
   "repository": {
     "type": "git",
-    "url": "git@github.schibsted.io:Podium/schema.git"
+    "url": "git@github.com:podium-lib/schemas.git"
   },
   "files": [
     "lib"
   ],
   "main": "./lib/index.js",
-  "publishConfig": {
-    "registry": "http://npm.finntech.no/"
-  },
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
