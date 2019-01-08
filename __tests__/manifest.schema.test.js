@@ -1,7 +1,7 @@
 'use strict';
 
-const manifest = require('../lib/manifest.schema');
 const Joi = require('joi');
+const manifest = require('../lib/manifest.schema');
 
 /**
  * .uri
