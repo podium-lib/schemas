@@ -1,11 +1,20 @@
 {
   "name": "@podium/schemas",
   "version": "2.1.1",
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "MIT",
+  "keywords": [
+    "micro services",
+    "micro frontend",
+    "components"
+  ],
   "repository": {
     "type": "git",
     "url": "git@github.com:podium-lib/schemas.git"
   },
+  "bugs": {
+    "url": "https://github.com/podium-lib/issues"
+  },
+  "homepage": "https://podium-lib.io/",
   "files": [
     "lib"
   ],
