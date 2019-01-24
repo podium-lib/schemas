@@ -1,11 +1,13 @@
 {
   "name": "@podium/schemas",
   "version": "2.2.0",
+  "description": "Schemas for validating the @podium contract.",
   "license": "MIT",
   "keywords": [
     "micro services",
     "micro frontend",
-    "components"
+    "components",
+    "podium"
   ],
   "repository": {
     "type": "git",
