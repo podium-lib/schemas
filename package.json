@@ -18,7 +18,8 @@
   },
   "homepage": "https://podium-lib.io/",
   "files": [
-    "lib"
+    "lib",
+    "manifest.json"
   ],
   "main": "./lib/index.js",
   "scripts": {
@@ -28,11 +29,12 @@
     "test:verbose": "jest --verbose",
     "test:coverage": "jest --coverage",
     "lint:format": "eslint --fix .",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "prepublishOnly": "node scripts/exportJsonSchema.js"
   },
   "dependencies": {
-    "joi": "14.3.1",
-    "ajv": "6.10.0"
+    "ajv": "6.10.0",
+    "joi": "14.3.1"
   },
   "devDependencies": {
     "eslint": "^5.12.0",
