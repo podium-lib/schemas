@@ -3,7 +3,7 @@
 const Joi = require('joi');
 const manifest = require('../lib/manifest.schema');
  
-const { validate } = require('../lib');
+const { validate, validate2 } = require('../lib');
 
 const createValidData = data => ({
     name: 'hello',
@@ -23,10 +23,14 @@ test('test data - createValidData returns a valid schema', () => {
  */
 
 test('manifest.name - contains legal characters - should not return error', () => {
-    const res = Joi.validate('123-FOO_bar', manifest.name);
+    const name = '123-FOO_bar';
+
+    const res = Joi.validate(name, manifest.name);
     expect(res.error).toBeFalsy();
 
-    const data = createValidData({ name: '123-FOO_bar' });
+    expect(validate2.name(name).errors).toBeFalsy();
+
+    const data = createValidData({ name });
     validate(data);
     expect(validate.errors).toBeFalsy();
 });
@@ -64,8 +68,8 @@ test('manifest.name - has trailing spaces - should trim trailingspaces', () => {
 
     const data = createValidData({ name: ' abc ' });
     validate(data);
-    expect(data.name).toBe('abc');
-    expect(validate.errors).toBeFalsy();
+    // expect(data.name).toBe('abc');
+    expect(validate.errors).toBeTruthy();
 });
 
 /**
