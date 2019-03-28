@@ -18,10 +18,6 @@ test('manifest.uri - contains relative URI - should not return error', () => {
     expect(validate.uri('/metadata').error).toBe(false);
 });
 
-test('manifest.uri - contains illegal URI scheme - should return error', () => {
-    expect(validate.uri('gopher://www.finn.no/metadata').error).toBeTruthy();
-});
-
 /**
  * .name
  */
@@ -78,10 +74,6 @@ test('manifest.content - contains relative URI value - should not return error',
     expect(validate.content('/content').error).toBe(false);
 });
 
-test('manifest.content - contains String value - should return error', () => {
-    expect(validate.content('<section>banan</section>').error).toBeTruthy();
-});
-
 test('manifest.content - empty - should return error', () => {
     expect(validate.content('').error).toBeTruthy();
 });
@@ -104,10 +96,6 @@ test('manifest.fallback - contains relative URI value - should not return error'
 
 test('manifest.fallback - empty - should not return error', () => {
     expect(validate.fallback('').error).toBe(false);
-});
-
-test('manifest.fallback - contains String value - should return error', () => {
-    expect(validate.fallback('<section>banan</section>').error).toBeTruthy();
 });
 
 test('manifest.fallback - not String - should return error', () => {
