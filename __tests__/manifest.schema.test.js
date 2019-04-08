@@ -240,3 +240,4 @@ test('manifest.schema - optional fields not set - should set defaults', () => {
     expect(res.value.assets.js).toBe('');
     expect(res.value.proxy).toEqual({});
 });
+
