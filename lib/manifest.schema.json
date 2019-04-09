@@ -42,6 +42,40 @@
         "js": ""
       }
     },
+    "css": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "string",
+            "format": "uri-reference",
+            "minLength": 1
+          },
+          {
+            "type": "object",
+            "default": {}
+          }
+        ]
+      },
+      "default": []
+    },
+    "js": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "string",
+            "format": "uri-reference",
+            "minLength": 1
+          },
+          {
+            "type": "object",
+            "default": {}
+          }
+        ]
+      },
+      "default": []
+    },
     "proxy": {
       "type": "object",
       "default": {},
