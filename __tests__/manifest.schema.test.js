@@ -23,23 +23,23 @@ test('manifest.uri - empty - should return error', () => {
 });
 
 /**
- * .uriAbsolute
+ * .uriStrict
  */
 
-test('manifest.uriAbsolute - contains absolute URI with http scheme - should not return error', () => {
-    expect(validate.uriAbsolute('http://www.finn.no/metadata').error).toBe(false);
+test('manifest.uriStrict - contains absolute URI with http scheme - should not return error', () => {
+    expect(validate.uriStrict('http://www.finn.no/metadata').error).toBe(false);
 });
 
-test('manifest.uriAbsolute - contains absolute URI with https scheme - should not return error', () => {
-    expect(validate.uriAbsolute('https://www.finn.no/metadata').error).toBe(false);
+test('manifest.uriStrict - contains absolute URI with https scheme - should not return error', () => {
+    expect(validate.uriStrict('https://www.finn.no/metadata').error).toBe(false);
 });
 
-test('manifest.uriAbsolute - contains relative URI - should return error', () => {
-    expect(validate.uriAbsolute('/metadata').error).toBeTruthy();
+test('manifest.uriStrict - contains relative URI - should return error', () => {
+    expect(validate.uriStrict('/metadata').error).toBeTruthy();
 });
 
-test('manifest.uriAbsolute - empty - should return error', () => {
-    expect(validate.uriAbsolute('').error).toBeTruthy();
+test('manifest.uriStrict - empty - should return error', () => {
+    expect(validate.uriStrict('').error).toBeTruthy();
 });
 
 /**
