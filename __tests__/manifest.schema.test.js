@@ -1,5 +1,5 @@
 'use strict';
- 
+
 const { validate } = require('../lib');
 
 /**
@@ -16,6 +16,10 @@ test('manifest.uri - contains absolute URI with https scheme - should not return
 
 test('manifest.uri - contains relative URI - should not return error', () => {
     expect(validate.uri('/metadata').error).toBe(false);
+});
+
+test('manifest.uri - empty - should return error', () => {
+    expect(validate.uri('').error).toBeTruthy();
 });
 
 /**
