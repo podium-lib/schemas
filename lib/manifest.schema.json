@@ -45,34 +45,36 @@
     "css": {
       "type": "array",
       "items": {
-        "anyOf": [
-          {
+        "type": "object",
+        "properties": {
+          "value": {
             "type": "string",
             "format": "uri-reference",
             "minLength": 1
           },
-          {
-            "type": "object",
-            "default": {}
+          "type": {
+            "type": "string"
           }
-        ]
+        },
+        "required": ["value", "type"]
       },
       "default": []
     },
     "js": {
       "type": "array",
       "items": {
-        "anyOf": [
-          {
+        "type": "object",
+        "properties": {
+          "value": {
             "type": "string",
             "format": "uri-reference",
             "minLength": 1
           },
-          {
-            "type": "object",
-            "default": {}
+          "type": {
+            "type": "string"
           }
-        ]
+        },
+        "required": ["value", "type"]
       },
       "default": []
     },

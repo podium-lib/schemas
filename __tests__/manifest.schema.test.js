@@ -234,32 +234,6 @@ test('manifest.schema - contains valid schema - should not return error', () => 
     expect(validate.manifest(schema).error).toBe(false);
 });
 
-test('manifest.schema - css and js is array of uris - should not return error', () => {
-    const schema = {
-        name: 'foo-bar',
-        version: '1.0.0',
-        content: 'http://www.finn.no/content',
-        fallback: 'http://www.finn.no/fallback',
-        assets: {
-            js: 'http://www.finn.no/podlet/js',
-            css: 'http://www.finn.no/podlet/css',
-        },
-        css: [
-            'http://www.finn.no/podlet/css/a',
-            'http://www.finn.no/podlet/css/b',
-        ],
-        js: [
-            'http://www.finn.no/podlet/js/a',
-            'http://www.finn.no/podlet/js/b',
-        ],
-        proxy: {
-            a: 'http://www.finn.no/foo',
-        },
-        team: 'The A-Team',
-    };
-    expect(validate.manifest(schema).error).toBe(false);
-});
-
 test('manifest.schema - css and js is array of objects - should not return error', () => {
     const schema = {
         name: 'foo-bar',
@@ -271,12 +245,12 @@ test('manifest.schema - css and js is array of objects - should not return error
             css: 'http://www.finn.no/podlet/css',
         },
         css: [
-            { value: 'http://www.finn.no/podlet/css/a' },
-            { value: 'http://www.finn.no/podlet/css/b' },
+            { value: 'http://www.finn.no/podlet/css/a', type: 'module' },
+            { value: 'http://www.finn.no/podlet/css/b', type: 'module' },
         ],
         js: [
-            { value: 'http://www.finn.no/podlet/js/a' },
-            { value: 'http://www.finn.no/podlet/js/b' },
+            { value: 'http://www.finn.no/podlet/js/a', type: 'module' },
+            { value: 'http://www.finn.no/podlet/js/b', type: 'module' },
         ],
         proxy: {
             a: 'http://www.finn.no/foo',
@@ -286,7 +260,7 @@ test('manifest.schema - css and js is array of objects - should not return error
     expect(validate.manifest(schema).error).toBe(false);
 });
 
-test('manifest.schema - css is not an array - should return error', () => {
+test('manifest.schema - css object is missing value - should return error', () => {
     const schema = {
         name: 'foo-bar',
         version: '1.0.0',
@@ -296,10 +270,79 @@ test('manifest.schema - css is not an array - should return error', () => {
             js: 'http://www.finn.no/podlet/js',
             css: 'http://www.finn.no/podlet/css',
         },
-        css: '',
+        css: [
+            { type: 'module' },
+            { value: 'http://www.finn.no/podlet/css/b', type: 'module' },
+        ],
+        js: [],
+        proxy: {
+            a: 'http://www.finn.no/foo',
+        },
+        team: 'The A-Team',
+    };
+    expect(validate.manifest(schema).error).toBeTruthy();
+});
+
+test('manifest.schema - css object is missing type - should return error', () => {
+    const schema = {
+        name: 'foo-bar',
+        version: '1.0.0',
+        content: 'http://www.finn.no/content',
+        fallback: 'http://www.finn.no/fallback',
+        assets: {
+            js: 'http://www.finn.no/podlet/js',
+            css: 'http://www.finn.no/podlet/css',
+        },
+        css: [
+            { value: 'http://www.finn.no/podlet/css/a', type: 'module' },
+            { value: 'http://www.finn.no/podlet/css/b' },
+        ],
+        js: [],
+        proxy: {
+            a: 'http://www.finn.no/foo',
+        },
+        team: 'The A-Team',
+    };
+    expect(validate.manifest(schema).error).toBeTruthy();
+});
+
+test('manifest.schema - js object is missing value - should return error', () => {
+    const schema = {
+        name: 'foo-bar',
+        version: '1.0.0',
+        content: 'http://www.finn.no/content',
+        fallback: 'http://www.finn.no/fallback',
+        assets: {
+            js: 'http://www.finn.no/podlet/js',
+            css: 'http://www.finn.no/podlet/css',
+        },
+        css: [],
+        js: [
+            { type: 'module' },
+            { value: 'http://www.finn.no/podlet/js/b', type: 'module' },
+        ],
+        proxy: {
+            a: 'http://www.finn.no/foo',
+        },
+        team: 'The A-Team',
+    };
+    expect(validate.manifest(schema).error).toBeTruthy();
+});
+
+test('manifest.schema - js object is missing type - should return error', () => {
+    const schema = {
+        name: 'foo-bar',
+        version: '1.0.0',
+        content: 'http://www.finn.no/content',
+        fallback: 'http://www.finn.no/fallback',
+        assets: {
+            js: 'http://www.finn.no/podlet/js',
+            css: 'http://www.finn.no/podlet/css',
+        },
+        css: [],
         js: [
             { value: 'http://www.finn.no/podlet/js/a' },
-            { value: 'http://www.finn.no/podlet/js/b' },
+            { value: 'http://www.finn.no/podlet/js/b', type: 'module' },
         ],
         proxy: {
             a: 'http://www.finn.no/foo',
@@ -319,10 +362,7 @@ test('manifest.schema - js is not an array - should return error', () => {
             js: 'http://www.finn.no/podlet/js',
             css: 'http://www.finn.no/podlet/css',
         },
-        css: [
-            { value: 'http://www.finn.no/podlet/css/a' },
-            { value: 'http://www.finn.no/podlet/css/b' },
-        ],
+        css: [],
         js: '',
         proxy: {
             a: 'http://www.finn.no/foo',
@@ -343,10 +383,7 @@ test('manifest.schema - css contain illegal types - should return error', () => 
             css: 'http://www.finn.no/podlet/css',
         },
         css: [1, true],
-        js: [
-            { value: 'http://www.finn.no/podlet/js/a' },
-            { value: 'http://www.finn.no/podlet/js/b' },
-        ],
+        js: [],
         proxy: {
             a: 'http://www.finn.no/foo',
         },
@@ -365,10 +402,7 @@ test('manifest.schema - js is not an array - should return error', () => {
             js: 'http://www.finn.no/podlet/js',
             css: 'http://www.finn.no/podlet/css',
         },
-        css: [
-            { value: 'http://www.finn.no/podlet/css/a' },
-            { value: 'http://www.finn.no/podlet/css/b' },
-        ],
+        css: [],
         js: [[], false],
         proxy: {
             a: 'http://www.finn.no/foo',
@@ -376,6 +410,39 @@ test('manifest.schema - js is not an array - should return error', () => {
         team: 'The A-Team',
     };
     expect(validate.manifest(schema).error).toBeTruthy();
+});
+
+test('manifest.schema - css and js objects has extra properties - should be kept', () => {
+    const schema = {
+        name: 'foo-bar',
+        version: '1.0.0',
+        content: 'http://www.finn.no/content',
+        fallback: 'http://www.finn.no/fallback',
+        assets: {
+            js: 'http://www.finn.no/podlet/js',
+            css: 'http://www.finn.no/podlet/css',
+        },
+        css: [
+            { value: 'http://www.finn.no/podlet/css/a', type: 'module', foo: 'bar' },
+            { value: 'http://www.finn.no/podlet/css/b', type: 'module', bar: 'foo' },
+        ],
+        js: [
+            { value: 'http://www.finn.no/podlet/js/a', type: 'module', foo: 'bar' },
+            { value: 'http://www.finn.no/podlet/js/b', type: 'module', bar: 'foo' },
+        ],
+        proxy: {
+            a: 'http://www.finn.no/foo',
+        },
+        team: 'The A-Team',
+    };
+
+    expect(validate.manifest(schema).error).toBe(false);
+
+    const res = validate.manifest(schema);
+    expect(res.value.css[0].foo).toEqual('bar');
+    expect(res.value.css[1].bar).toEqual('foo');
+    expect(res.value.js[0].foo).toEqual('bar');
+    expect(res.value.js[1].bar).toEqual('foo');
 });
 
 test('manifest.schema - contains invalid schema - should return error', () => {
@@ -408,6 +475,7 @@ test('manifest.schema - optional fields not set - should set defaults', () => {
     expect(res.value.team).toBe('');
     expect(res.value.assets.css).toBe('');
     expect(res.value.assets.js).toBe('');
+    expect(res.value.css).toEqual([]);
+    expect(res.value.js).toEqual([]);
     expect(res.value.proxy).toEqual({});
 });
-
