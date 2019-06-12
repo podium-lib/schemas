@@ -1,6 +1,6 @@
 {
   "name": "@podium/schemas",
-  "version": "3.0.0",
+  "version": "4.0.0-next.3",
   "description": "Schemas for validating the @podium contract.",
   "license": "MIT",
   "keywords": [
@@ -27,11 +27,10 @@
     "test": "jest .",
     "test:verbose": "jest --verbose",
     "test:coverage": "jest --coverage",
-    "lint:format": "eslint --fix .",
-    "precommit": "lint-staged"
+    "lint:format": "eslint --fix ."
   },
   "dependencies": {
-    "joi": "14.3.1"
+    "ajv": "6.10.0"
   },
   "devDependencies": {
     "eslint": "^5.12.0",
@@ -68,5 +67,10 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }

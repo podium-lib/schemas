@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 100,
+      "pattern": "^[a-zA-Z0-9_-]*$"
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "content": {
+      "type": "string",
+      "format": "uri-reference",
+      "minLength": 1
+    },
+    "fallback": {
+      "type": "string",
+      "format": "uri-reference",
+      "default": ""
+    },
+    "assets": {
+      "type": "object",
+      "properties": {
+        "css": {
+          "type": "string",
+          "format": "uri-reference",
+          "default": ""
+        },
+        "js": {
+          "type": "string",
+          "format": "uri-reference",
+          "default": ""
+        }
+      },
+      "default": {
+        "css": "",
+        "js": ""
+      }
+    },
+    "css": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "format": "uri-reference",
+            "minLength": 1
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": ["value", "type"]
+      },
+      "default": []
+    },
+    "js": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "format": "uri-reference",
+            "minLength": 1
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": ["value", "type"]
+      },
+      "default": []
+    },
+    "proxy": {
+      "type": "object",
+      "default": {},
+      "maxProperties": 4,
+      "patternProperties": {
+        ".*": {
+          "type": "string",
+          "format": "uri-reference"
+        }
+      }
+    },
+    "team": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "required": ["name", "version", "content"]
+}
