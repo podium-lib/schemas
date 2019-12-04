@@ -39,7 +39,6 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.1",
     "jest": "^24.9.0",
-    "lint-staged": "^9.5.0",
     "prettier": "^1.19.1"
   },
   "jest": {
@@ -56,15 +55,5 @@
     },
     "testEnvironment": "node",
     "clearMocks": true
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix --config ./.eslintrc",
-      "git add"
-    ],
-    "{*.json,*.md,.eslintrc,.prettierrc}": [
-      "prettier --write",
-      "git add"
-    ]
   }
 }
