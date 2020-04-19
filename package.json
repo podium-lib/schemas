@@ -30,7 +30,7 @@
     "lint:format": "eslint --fix ."
   },
   "dependencies": {
-    "ajv": "6.12.1"
+    "ajv": "6.12.2"
   },
   "devDependencies": {
     "eslint": "6.8.0",
