@@ -157,12 +157,12 @@ test('manifest.fallback - not String', (t) => {
 //
 
 test('manifest.js - contains legal URI value', (t) => {
-    t.false(validate.js('https://www.finn.no/js').error, 'should not return error');
+    t.false(validate.js([{ value: 'https://www.finn.no/js', type: 'module' }]).error, 'should not return error');
     t.end();
 });
 
-test('manifest.js - empty', (t) => {
-    t.deepEqual(validate.js(''), {value: '', error: false}, 'should not return error');
+test('manifest.js - empty array', (t) => {
+    t.deepEqual(validate.js([]), {value: [], error: false}, 'should not return error');
     t.end();
 });
 
@@ -171,12 +171,12 @@ test('manifest.js - empty', (t) => {
 //
 
 test('manifest.css - contains legal URI value', (t) => {
-    t.false(validate.css('http://www.finn.no/css').error, 'should not return error');
+    t.false(validate.css([{ value: 'https://www.finn.no/css', type: 'text/css' }]).error, 'should not return error');
     t.end();
 });
 
-test('manifest.css - empty', (t) => {
-    t.deepEqual(validate.css(''), {value: '', error: false}, 'should not return error');
+test('manifest.css - empty array', (t) => {
+    t.deepEqual(validate.css([]), {value: [], error: false}, 'should not return error');
     t.end();
 });
 
@@ -259,10 +259,6 @@ test('manifest.schema - contains valid schema', (t) => {
         version: '1.0.0',
         content: 'http://www.finn.no/content',
         fallback: 'http://www.finn.no/fallback',
-        assets: {
-            js: 'http://www.finn.no/podlet/js',
-            css: 'http://www.finn.no/podlet/css',
-        },
         css: [],
         js: [],
         proxy: {
@@ -280,10 +276,6 @@ test('manifest.schema - css and js is array of objects', (t) => {
         version: '1.0.0',
         content: 'http://www.finn.no/content',
         fallback: 'http://www.finn.no/fallback',
-        assets: {
-            js: 'http://www.finn.no/podlet/js',
-            css: 'http://www.finn.no/podlet/css',
-        },
         css: [
             { value: 'http://www.finn.no/podlet/css/a', type: 'module' },
             { value: 'http://www.finn.no/podlet/css/b', type: 'module' },
@@ -307,10 +299,6 @@ test('manifest.schema - css object is missing value', (t) => {
         version: '1.0.0',
         content: 'http://www.finn.no/content',
         fallback: 'http://www.finn.no/fallback',
-        assets: {
-            js: 'http://www.finn.no/podlet/js',
-            css: 'http://www.finn.no/podlet/css',
-        },
         css: [
             { type: 'module' },
             { value: 'http://www.finn.no/podlet/css/b', type: 'module' },
@@ -331,10 +319,6 @@ test('manifest.schema - css object is missing type', (t) => {
         version: '1.0.0',
         content: 'http://www.finn.no/content',
         fallback: 'http://www.finn.no/fallback',
-        assets: {
-            js: 'http://www.finn.no/podlet/js',
-            css: 'http://www.finn.no/podlet/css',
-        },
         css: [
             { value: 'http://www.finn.no/podlet/css/a', type: 'module' },
             { value: 'http://www.finn.no/podlet/css/b' },
@@ -355,10 +339,6 @@ test('manifest.schema - js object is missing value', (t) => {
         version: '1.0.0',
         content: 'http://www.finn.no/content',
         fallback: 'http://www.finn.no/fallback',
-        assets: {
-            js: 'http://www.finn.no/podlet/js',
-            css: 'http://www.finn.no/podlet/css',
-        },
         css: [],
         js: [
             { type: 'module' },
@@ -379,10 +359,6 @@ test('manifest.schema - js object is missing type', (t) => {
         version: '1.0.0',
         content: 'http://www.finn.no/content',
         fallback: 'http://www.finn.no/fallback',
-        assets: {
-            js: 'http://www.finn.no/podlet/js',
-            css: 'http://www.finn.no/podlet/css',
-        },
         css: [],
         js: [
             { value: 'http://www.finn.no/podlet/js/a' },
@@ -403,10 +379,6 @@ test('manifest.schema - js is not an array', (t) => {
         version: '1.0.0',
         content: 'http://www.finn.no/content',
         fallback: 'http://www.finn.no/fallback',
-        assets: {
-            js: 'http://www.finn.no/podlet/js',
-            css: 'http://www.finn.no/podlet/css',
-        },
         css: [],
         js: '',
         proxy: {
@@ -424,10 +396,6 @@ test('manifest.schema - css contain illegal types', (t) => {
         version: '1.0.0',
         content: 'http://www.finn.no/content',
         fallback: 'http://www.finn.no/fallback',
-        assets: {
-            js: 'http://www.finn.no/podlet/js',
-            css: 'http://www.finn.no/podlet/css',
-        },
         css: [1, true],
         js: [],
         proxy: {
@@ -445,10 +413,6 @@ test('manifest.schema - js is not an array', (t) => {
         version: '1.0.0',
         content: 'http://www.finn.no/content',
         fallback: 'http://www.finn.no/fallback',
-        assets: {
-            js: 'http://www.finn.no/podlet/js',
-            css: 'http://www.finn.no/podlet/css',
-        },
         css: [],
         js: [[], false],
         proxy: {
@@ -466,10 +430,6 @@ test('manifest.schema - css and js objects has extra properties', (t) => {
         version: '1.0.0',
         content: 'http://www.finn.no/content',
         fallback: 'http://www.finn.no/fallback',
-        assets: {
-            js: 'http://www.finn.no/podlet/js',
-            css: 'http://www.finn.no/podlet/css',
-        },
         css: [
             { value: 'http://www.finn.no/podlet/css/a', type: 'module', foo: 'bar' },
             { value: 'http://www.finn.no/podlet/css/b', type: 'module', bar: 'foo' },
@@ -524,8 +484,6 @@ test('manifest.schema - optional fields not set - should set defaults', (t) => {
     const res = validate.manifest(schema)
     t.equal(res.value.fallback, '');
     t.equal(res.value.team, '');
-    t.equal(res.value.assets.css, '');
-    t.equal(res.value.assets.js, '');
     t.same(res.value.css, []);
     t.same(res.value.js, []);
     t.same(res.value.proxy, {});
