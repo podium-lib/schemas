@@ -1,3 +1,10 @@
+## [4.0.3-next.1](https://github.com/podium-lib/schemas/compare/v4.0.2...v4.0.3-next.1) (2020-07-11)
+
+
+### Bug Fixes
+
+* Initial setup of next branch ([5314940](https://github.com/podium-lib/schemas/commit/53149406b1287c6a7d85dd9cbc7f623eeaaac307))
+
 # Changelog
 
 Notable changes to this project.
