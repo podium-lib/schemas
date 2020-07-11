@@ -1,9 +1,12 @@
 name: Release and Publish
 
 on:
- pull_request:
  push:
-  branches: [ master ]
+  branches: 
+    - master
+    - alpha
+    - beta
+    - next
 
 jobs:
  test:
