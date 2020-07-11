@@ -1,4 +1,4 @@
-# @podium/schemas
+# @podium/schemas v5
 
 Schemas for validating the @podium contract.
 
