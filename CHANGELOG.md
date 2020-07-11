@@ -1,3 +1,19 @@
+# [5.0.0-next.1](https://github.com/podium-lib/schemas/compare/v4.0.3-next.1...v5.0.0-next.1) (2020-07-11)
+
+
+### chore
+
+* Remove .assets.js and .assets.css ([#62](https://github.com/podium-lib/schemas/issues/62)) ([6468f69](https://github.com/podium-lib/schemas/commit/6468f69b7d51cffef06d9d5c2d7d05b67b1af575))
+
+
+### BREAKING CHANGES
+
+* .assets.js and .assets.css is now replaced by .js and .css
+
+Resolves: https://github.com/podium-lib/issues/issues/26
+
+Co-authored-by: Trygve Lie <trygve.lie@finn.no>
+
 ## [4.0.3-next.1](https://github.com/podium-lib/schemas/compare/v4.0.2...v4.0.3-next.1) (2020-07-11)
 
 
