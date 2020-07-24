@@ -1,6 +1,7 @@
 {
   "name": "@podium/schemas",
   "version": "5.0.0-next.1",
+  "type": "module",
   "description": "Schemas for validating the @podium contract.",
   "license": "MIT",
   "keywords": [
@@ -24,11 +25,15 @@
     "LICENSE",
     "lib"
   ],
-  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/validate.js",
+    "./schema": "./lib/schema.js",
+    "./schema.js": "./lib/schema.js"
+  },
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "test": "tap tests/*.js"
+    "test": "tap --no-esm tests/*.js"
   },
   "dependencies": {
     "ajv": "6.12.3"
@@ -40,13 +45,13 @@
     "@semantic-release/github": "7.0.7",
     "@semantic-release/npm": "7.0.5",
     "@semantic-release/release-notes-generator": "9.0.1",
-    "eslint": "7.3.1",
+    "eslint": "7.5.0",
     "eslint-config-airbnb-base": "14.2.0",
     "eslint-config-prettier": "6.11.0",
     "eslint-plugin-import": "2.22.0",
     "eslint-plugin-prettier": "3.1.4",
-    "prettier": "2.0.2",
+    "prettier": "2.0.5",
     "semantic-release": "17.1.1",
-    "tap": "14.10.7"
+    "tap": "14.10.8"
   }
 }
