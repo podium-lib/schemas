@@ -31,7 +31,7 @@
     "test": "tap tests/*.js"
   },
   "dependencies": {
-    "ajv": "6.12.5"
+    "ajv": "6.12.6"
   },
   "devDependencies": {
     "@semantic-release/changelog": "5.0.1",
