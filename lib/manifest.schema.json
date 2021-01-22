@@ -53,10 +53,34 @@
             "minLength": 1
           },
           "type": {
+            "type": "string",
+            "default": "text/css"
+          },
+          "crossorigin": {
+            "type": "string"
+          },
+          "disabled": {
+            "type": "boolean",
+            "default": false
+          },
+          "hreflang": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "media": {
+            "type": "string"
+          },
+          "rel": {
+            "type": "string",
+            "default": "stylesheet"
+          },
+          "as": {
             "type": "string"
           }
         },
-        "required": ["value", "type"]
+        "required": ["value"]
       },
       "default": []
     },
@@ -72,9 +96,30 @@
           },
           "type": {
             "type": "string"
+          },
+          "referrerpolicy": {
+            "type": "string"
+          },
+          "crossorigin": {
+            "type": "string"
+          },
+          "integrity": {
+            "type": "string"
+          },
+          "nomodule": {
+            "type": "boolean",
+            "default": false
+          },
+          "async": {
+            "type": "boolean",
+            "default": false
+          },
+          "defer": {
+            "type": "boolean",
+            "default": false
           }
         },
-        "required": ["value", "type"]
+        "required": ["value"]
       },
       "default": []
     },
