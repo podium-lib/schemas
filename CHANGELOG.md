@@ -1,3 +1,10 @@
+# [4.1.0](https://github.com/podium-lib/schemas/compare/v4.0.7...v4.1.0) (2021-01-22)
+
+
+### Features
+
+* Add css and js html attributes to schema ([#88](https://github.com/podium-lib/schemas/issues/88)) ([1db6f63](https://github.com/podium-lib/schemas/commit/1db6f632d63337e25f68f7c0ff80cd15a61a33a3))
+
 ## [4.0.7](https://github.com/podium-lib/schemas/compare/v4.0.6...v4.0.7) (2021-01-21)
 
 
