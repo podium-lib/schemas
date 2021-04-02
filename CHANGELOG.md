@@ -1,3 +1,10 @@
+## [4.1.12](https://github.com/podium-lib/schemas/compare/v4.1.11...v4.1.12) (2021-04-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv-formats to v2.0.2 ([5c4cbfb](https://github.com/podium-lib/schemas/commit/5c4cbfb6e0f372b518dc08773949a5bc8bf9837b))
+
 ## [4.1.11](https://github.com/podium-lib/schemas/compare/v4.1.10...v4.1.11) (2021-04-01)
 
 
