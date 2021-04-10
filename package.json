@@ -33,7 +33,7 @@
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "test": "tap ./tests"
+    "test": "tap"
   },
   "dependencies": {
     "ajv": "8.0.5",
