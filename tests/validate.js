@@ -313,26 +313,6 @@ test('manifest.schema - css object is missing value', (t) => {
     t.end();
 });
 
-test('manifest.schema - css object is missing type', (t) => {
-    const schema = {
-        name: 'foo-bar',
-        version: '1.0.0',
-        content: 'http://www.finn.no/content',
-        fallback: 'http://www.finn.no/fallback',
-        css: [
-            { value: 'http://www.finn.no/podlet/css/a', type: 'module' },
-            { value: 'http://www.finn.no/podlet/css/b' },
-        ],
-        js: [],
-        proxy: {
-            a: 'http://www.finn.no/foo',
-        },
-        team: 'The A-Team',
-    };
-    t.true(validate.manifest(schema).error, 'should return error');
-    t.end();
-});
-
 test('manifest.schema - js object is missing value', (t) => {
     const schema = {
         name: 'foo-bar',
@@ -342,26 +322,6 @@ test('manifest.schema - js object is missing value', (t) => {
         css: [],
         js: [
             { type: 'module' },
-            { value: 'http://www.finn.no/podlet/js/b', type: 'module' },
-        ],
-        proxy: {
-            a: 'http://www.finn.no/foo',
-        },
-        team: 'The A-Team',
-    };
-    t.true(validate.manifest(schema).error, 'should return error');
-    t.end();
-});
-
-test('manifest.schema - js object is missing type', (t) => {
-    const schema = {
-        name: 'foo-bar',
-        version: '1.0.0',
-        content: 'http://www.finn.no/content',
-        fallback: 'http://www.finn.no/fallback',
-        css: [],
-        js: [
-            { value: 'http://www.finn.no/podlet/js/a' },
             { value: 'http://www.finn.no/podlet/js/b', type: 'module' },
         ],
         proxy: {
