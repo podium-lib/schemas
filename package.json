@@ -23,8 +23,9 @@
     "CHANGELOG.md",
     "README.md",
     "LICENSE",
+    "schema",
     "dist",
-    "lib"
+    "src"
   ],
   "main": "./dist/cjs/validate.js",
   "exports": {

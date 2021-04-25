@@ -11,7 +11,7 @@ import {
     uri,
     css,
     js,
-} from '../lib/validate.js';
+} from '../src/validate.js';
 
 //
 // .uri
