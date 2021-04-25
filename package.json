@@ -27,10 +27,10 @@
     "dist",
     "src"
   ],
-  "main": "./dist/cjs/validate.js",
+  "main": "./dist/validate.js",
   "exports": {
-    "import": "./dist/esm/validate.js",
-    "require": "./dist/cjs/validate.js"
+    "require": "./dist/validate.js",
+    "import": "./src/validate.js"
   },
   "scripts": {
     "lint": "eslint .",
@@ -41,8 +41,7 @@
   },
   "dependencies": {
     "ajv": "8.1.0",
-    "ajv-formats": "2.0.2",
-    "find-up": "5.0.0"
+    "ajv-formats": "2.0.2"
   },
   "devDependencies": {
     "@semantic-release/changelog": "5.0.1",
