@@ -1,29 +1,39 @@
-'use strict';
-
-const { test } = require('tap');
-const { validate } = require('../lib');
+import tap from 'tap';
+import { 
+    uriStrict,
+    manifest,
+    fallback,
+    version,
+    content,
+    proxy,
+    team,
+    name,
+    uri,
+    css,
+    js,
+} from '../lib/validate.js';
 
 //
 // .uri
 //
 
-test('manifest.uri - contains absolute URI with http scheme', (t) => {
-    t.false(validate.uri('http://www.finn.no/metadata').error, 'should not return error');
+tap.test('manifest.uri - contains absolute URI with http scheme', (t) => {
+    t.notOk(uri('http://www.finn.no/metadata').error, 'should not return error');
     t.end();
 });
 
-test('manifest.uri - contains absolute URI with https scheme', (t) => {
-    t.false(validate.uri('https://www.finn.no/metadata').error, 'should not return error');
+tap.test('manifest.uri - contains absolute URI with https scheme', (t) => {
+    t.notOk(uri('https://www.finn.no/metadata').error, 'should not return error');
     t.end();
 });
 
-test('manifest.uri - contains relative URI', (t) => {
-    t.false(validate.uri('/metadata').error, 'should not return error');
+tap.test('manifest.uri - contains relative URI', (t) => {
+    t.notOk(uri('/metadata').error, 'should not return error');
     t.end();
 });
 
-test('manifest.uri - empty', (t) => {
-    t.true(validate.uri('').error, 'should return error')
+tap.test('manifest.uri - empty', (t) => {
+    t.ok(uri('').error, 'should return error')
     t.end();
 });
 
@@ -31,23 +41,23 @@ test('manifest.uri - empty', (t) => {
 // .uriStrict
 //
 
-test('manifest.uriStrict - contains absolute URI with http scheme', (t) => {
-    t.false(validate.uriStrict('http://www.finn.no/metadata').error, 'should not return error');
+tap.test('manifest.uriStrict - contains absolute URI with http scheme', (t) => {
+    t.notOk(uriStrict('http://www.finn.no/metadata').error, 'should not return error');
     t.end();
 });
 
-test('manifest.uriStrict - contains absolute URI with https scheme', (t) => {
-    t.false(validate.uriStrict('https://www.finn.no/metadata').error, 'should not return error');
+tap.test('manifest.uriStrict - contains absolute URI with https scheme', (t) => {
+    t.notOk(uriStrict('https://www.finn.no/metadata').error, 'should not return error');
     t.end();
 });
 
-test('manifest.uriStrict - contains relative URI', (t) => {
-    t.true(validate.uriStrict('/metadata').error, 'should return error')
+tap.test('manifest.uriStrict - contains relative URI', (t) => {
+    t.ok(uriStrict('/metadata').error, 'should return error')
     t.end();
 });
 
-test('manifest.uriStrict - empty - should return error', (t) => {
-    t.true(validate.uriStrict('').error, 'should return error')
+tap.test('manifest.uriStrict - empty - should return error', (t) => {
+    t.ok(uriStrict('').error, 'should return error')
     t.end();
 });
 
@@ -55,28 +65,28 @@ test('manifest.uriStrict - empty - should return error', (t) => {
 // .name
 //
 
-test('manifest.name - contains legal characters', (t) => {
-    t.false(validate.name('123-FOO_bar').error, 'should not return error');
+tap.test('manifest.name - contains legal characters', (t) => {
+    t.notOk(name('123-FOO_bar').error, 'should not return error');
     t.end();
 });
 
-test('manifest.name - empty', (t) => {
-    t.true(validate.name('').error, 'should return error')
+tap.test('manifest.name - empty', (t) => {
+    t.ok(name('').error, 'should return error')
     t.end();
 });
 
-test('manifest.name - contains illegal characters', (t) => {
-    t.true(validate.name('foo~bar').error, 'should return error')
+tap.test('manifest.name - contains illegal characters', (t) => {
+    t.ok(name('foo~bar').error, 'should return error')
     t.end();
 });
 
-test('manifest.name - not String', (t) => {
-    t.true(validate.name(123).error, 'should return error')
+tap.test('manifest.name - not String', (t) => {
+    t.ok(name(123).error, 'should return error')
     t.end();
 });
 
-test('manifest.name - has trailing spaces', (t) => {
-    t.deepEqual(validate.name(' abc '), {value: 'abc', error: false}, 'should trim trailingspaces');
+tap.test('manifest.name - has trailing spaces', (t) => {
+    t.same(name(' abc '), {value: 'abc', error: false}, 'should trim trailingspaces');
     t.end();
 });
 
@@ -84,23 +94,23 @@ test('manifest.name - has trailing spaces', (t) => {
 // .version
 //
 
-test('manifest.version - contains String value', (t) => {
-    t.false(validate.version('1.0.0-beta-1').error, 'should not return error');
+tap.test('manifest.version - contains String value', (t) => {
+    t.notOk(version('1.0.0-beta-1').error, 'should not return error');
     t.end();
 });
 
-test('manifest.version - empty', (t) => {
-    t.true(validate.version('').error, 'should return error');
+tap.test('manifest.version - empty', (t) => {
+    t.ok(version('').error, 'should return error');
     t.end();
 });
 
-test('manifest.version - not String', (t) => {
-    t.true(validate.version(123).error, 'should return error');
+tap.test('manifest.version - not String', (t) => {
+    t.ok(version(123).error, 'should return error');
     t.end();
 });
 
-test('manifest.version - has trailing spaces', (t) => {
-    t.deepEqual(validate.version(' 1.0.0-beta-1 '), {value: '1.0.0-beta-1', error: false}, 'should trim trailingspaces');
+tap.test('manifest.version - has trailing spaces', (t) => {
+    t.same(version(' 1.0.0-beta-1 '), {value: '1.0.0-beta-1', error: false}, 'should trim trailingspaces');
     t.end();
 });
 
@@ -108,23 +118,23 @@ test('manifest.version - has trailing spaces', (t) => {
 // .content
 //
 
-test('manifest.content - contains absolute URI value', (t) => {
-    t.false(validate.content('http://www.finn.no/content').error, 'should not return error');
+tap.test('manifest.content - contains absolute URI value', (t) => {
+    t.notOk(content('http://www.finn.no/content').error, 'should not return error');
     t.end();
 });
 
-test('manifest.content - contains relative URI value', (t) => {
-    t.false(validate.content('/content').error, 'should not return error');
+tap.test('manifest.content - contains relative URI value', (t) => {
+    t.notOk(content('/content').error, 'should not return error');
     t.end();
 });
 
-test('manifest.content - empty', (t) => {
-    t.true(validate.content('').error, 'should return error');
+tap.test('manifest.content - empty', (t) => {
+    t.ok(content('').error, 'should return error');
     t.end();
 });
 
-test('manifest.content - not String', (t) => {
-    t.true(validate.content(123).error, 'should return error');
+tap.test('manifest.content - not String', (t) => {
+    t.ok(content(123).error, 'should return error');
     t.end();
 });
 
@@ -132,23 +142,23 @@ test('manifest.content - not String', (t) => {
 // .fallback
 //
 
-test('manifest.fallback - contains absolute URI value', (t) => {
-    t.false(validate.fallback('http://www.finn.no/fallback').error, 'should not return error');
+tap.test('manifest.fallback - contains absolute URI value', (t) => {
+    t.notOk(fallback('http://www.finn.no/fallback').error, 'should not return error');
     t.end();
 });
 
-test('manifest.fallback - contains relative URI value', (t) => {
-    t.false(validate.fallback('/fallback').error, 'should not return error');
+tap.test('manifest.fallback - contains relative URI value', (t) => {
+    t.notOk(fallback('/fallback').error, 'should not return error');
     t.end();
 });
 
-test('manifest.fallback - empty', (t) => {
-    t.false(validate.fallback('').error, 'should not return error');
+tap.test('manifest.fallback - empty', (t) => {
+    t.notOk(fallback('').error, 'should not return error');
     t.end();
 });
 
-test('manifest.fallback - not String', (t) => {
-    t.true(validate.fallback(123).error, 'should return error');
+tap.test('manifest.fallback - not String', (t) => {
+    t.ok(fallback(123).error, 'should return error');
     t.end();
 });
 
@@ -156,13 +166,13 @@ test('manifest.fallback - not String', (t) => {
 // .js
 //
 
-test('manifest.js - contains legal URI value', (t) => {
-    t.false(validate.js([{ value: 'https://www.finn.no/js', type: 'module' }]).error, 'should not return error');
+tap.test('manifest.js - contains legal URI value', (t) => {
+    t.notOk(js([{ value: 'https://www.finn.no/js', type: 'module' }]).error, 'should not return error');
     t.end();
 });
 
-test('manifest.js - empty array', (t) => {
-    t.deepEqual(validate.js([]), {value: [], error: false}, 'should not return error');
+tap.test('manifest.js - empty array', (t) => {
+    t.same(js([]), {value: [], error: false}, 'should not return error');
     t.end();
 });
 
@@ -170,13 +180,13 @@ test('manifest.js - empty array', (t) => {
 // .css
 //
 
-test('manifest.css - contains legal URI value', (t) => {
-    t.false(validate.css([{ value: 'https://www.finn.no/css', type: 'text/css' }]).error, 'should not return error');
+tap.test('manifest.css - contains legal URI value', (t) => {
+    t.notOk(css([{ value: 'https://www.finn.no/css', type: 'text/css' }]).error, 'should not return error');
     t.end();
 });
 
-test('manifest.css - empty array', (t) => {
-    t.deepEqual(validate.css([]), {value: [], error: false}, 'should not return error');
+tap.test('manifest.css - empty array', (t) => {
+    t.same(css([]), {value: [], error: false}, 'should not return error');
     t.end();
 });
 
@@ -184,41 +194,41 @@ test('manifest.css - empty array', (t) => {
 // .proxy
 //
 
-test('manifest.proxy - empty object', (t) => {
-    t.false(validate.proxy({}).error, 'should not return error');
+tap.test('manifest.proxy - empty object', (t) => {
+    t.notOk(proxy({}).error, 'should not return error');
     t.end();
 });
 
-test('manifest.proxy - not object', (t) => {
-    t.true(validate.proxy('').error, 'should return error');
+tap.test('manifest.proxy - not object', (t) => {
+    t.ok(proxy('').error, 'should return error');
     t.end();
 });
 
-test('manifest.proxy - proxy item is absolute url', (t) => {
+tap.test('manifest.proxy - proxy item is absolute url', (t) => {
     const item = {
         a: 'http://www.finn.no/foo',
     };
-    t.false(validate.proxy(item).error, 'should not return error');
+    t.notOk(proxy(item).error, 'should not return error');
     t.end();
 });
 
-test('manifest.proxy - proxy item is relative url', (t) => {
+tap.test('manifest.proxy - proxy item is relative url', (t) => {
     const item = {
         a: '/foo/bar',
     };
-    t.false(validate.proxy(item).error, 'should not return error');
+    t.notOk(proxy(item).error, 'should not return error');
     t.end();
 });
 
-test('manifest.proxy - proxy item is not a url', (t) => {
+tap.test('manifest.proxy - proxy item is not a url', (t) => {
     const item = {
         a: [undefined],
     };
-    t.true(validate.proxy(item).error, 'should return error');
+    t.ok(proxy(item).error, 'should return error');
     t.end();
 });
 
-test('manifest.proxy - more than 4 items', (t) => {
+tap.test('manifest.proxy - more than 4 items', (t) => {
     const item = {
         a: 'http://www.finn.no/foo/a',
         b: 'http://www.finn.no/foo/b',
@@ -226,7 +236,7 @@ test('manifest.proxy - more than 4 items', (t) => {
         d: 'http://www.finn.no/foo/d',
         e: 'http://www.finn.no/foo/e',
     };
-    t.true(validate.proxy(item).error, 'should return error');
+    t.ok(proxy(item).error, 'should return error');
     t.end();
 });
 
@@ -234,18 +244,18 @@ test('manifest.proxy - more than 4 items', (t) => {
 // .team
 //
 
-test('manifest.team - contains String value', (t) => {
-    t.false(validate.team('Bananas').error, 'should not return error');
+tap.test('manifest.team - contains String value', (t) => {
+    t.notOk(team('Bananas').error, 'should not return error');
     t.end();
 });
 
-test('manifest.team - empty', (t) => {
-    t.false(validate.team('').error, 'should not return error');
+tap.test('manifest.team - empty', (t) => {
+    t.notOk(team('').error, 'should not return error');
     t.end();
 });
 
-test('manifest.team - not String', (t) => {
-    t.true(validate.team(123).error, 'should return error');
+tap.test('manifest.team - not String', (t) => {
+    t.ok(team(123).error, 'should return error');
     t.end();
 });
 
@@ -253,7 +263,7 @@ test('manifest.team - not String', (t) => {
 // .schema
 //
 
-test('manifest.schema - contains valid schema', (t) => {
+tap.test('manifest.schema - contains valid schema', (t) => {
     const schema = {
         name: 'foo-bar',
         version: '1.0.0',
@@ -266,11 +276,11 @@ test('manifest.schema - contains valid schema', (t) => {
         },
         team: 'The A-Team',
     };
-    t.false(validate.manifest(schema).error, 'should not return error');
+    t.notOk(manifest(schema).error, 'should not return error');
     t.end();
 });
 
-test('manifest.schema - css and js is array of objects', (t) => {
+tap.test('manifest.schema - css and js is array of objects', (t) => {
     const schema = {
         name: 'foo-bar',
         version: '1.0.0',
@@ -289,11 +299,11 @@ test('manifest.schema - css and js is array of objects', (t) => {
         },
         team: 'The A-Team',
     };
-    t.false(validate.manifest(schema).error, 'should not return error');
+    t.notOk(manifest(schema).error, 'should not return error');
     t.end();
 });
 
-test('manifest.schema - css object is missing value', (t) => {
+tap.test('manifest.schema - css object is missing value', (t) => {
     const schema = {
         name: 'foo-bar',
         version: '1.0.0',
@@ -309,11 +319,11 @@ test('manifest.schema - css object is missing value', (t) => {
         },
         team: 'The A-Team',
     };
-    t.true(validate.manifest(schema).error, 'should return error');
+    t.ok(manifest(schema).error, 'should return error');
     t.end();
 });
 
-test('manifest.schema - js object is missing value', (t) => {
+tap.test('manifest.schema - js object is missing value', (t) => {
     const schema = {
         name: 'foo-bar',
         version: '1.0.0',
@@ -329,11 +339,11 @@ test('manifest.schema - js object is missing value', (t) => {
         },
         team: 'The A-Team',
     };
-    t.true(validate.manifest(schema).error, 'should return error');
+    t.ok(manifest(schema).error, 'should return error');
     t.end();
 });
 
-test('manifest.schema - js is not an array', (t) => {
+tap.test('manifest.schema - js is not an array', (t) => {
     const schema = {
         name: 'foo-bar',
         version: '1.0.0',
@@ -346,11 +356,11 @@ test('manifest.schema - js is not an array', (t) => {
         },
         team: 'The A-Team',
     };
-    t.true(validate.manifest(schema).error, 'should return error');
+    t.ok(manifest(schema).error, 'should return error');
     t.end();
 });
 
-test('manifest.schema - css contain illegal types', (t) => {
+tap.test('manifest.schema - css contain illegal types', (t) => {
     const schema = {
         name: 'foo-bar',
         version: '1.0.0',
@@ -363,11 +373,11 @@ test('manifest.schema - css contain illegal types', (t) => {
         },
         team: 'The A-Team',
     };
-    t.true(validate.manifest(schema).error, 'should return error');
+    t.ok(manifest(schema).error, 'should return error');
     t.end();
 });
 
-test('manifest.schema - js is not an array', (t) => {
+tap.test('manifest.schema - js is not an array', (t) => {
     const schema = {
         name: 'foo-bar',
         version: '1.0.0',
@@ -380,11 +390,11 @@ test('manifest.schema - js is not an array', (t) => {
         },
         team: 'The A-Team',
     };
-    t.true(validate.manifest(schema).error, 'should return error');
+    t.ok(manifest(schema).error, 'should return error');
     t.end();
 });
 
-test('manifest.schema - css and js objects has extra properties', (t) => {
+tap.test('manifest.schema - css and js objects has extra properties', (t) => {
     const schema = {
         name: 'foo-bar',
         version: '1.0.0',
@@ -404,9 +414,9 @@ test('manifest.schema - css and js objects has extra properties', (t) => {
         team: 'The A-Team',
     };
 
-    t.false(validate.manifest(schema).error, 'should not return error');
+    t.notOk(manifest(schema).error, 'should not return error');
 
-    const res = validate.manifest(schema);
+    const res = manifest(schema);
     t.equal(res.value.css[0].foo, 'bar');
     t.equal(res.value.css[1].bar, 'foo');
     t.equal(res.value.js[0].foo, 'bar');
@@ -414,34 +424,34 @@ test('manifest.schema - css and js objects has extra properties', (t) => {
     t.end();
 });
 
-test('manifest.schema - contains invalid schema', (t) => {
+tap.test('manifest.schema - contains invalid schema', (t) => {
     const schema = {
         version: 1,
         team: 'The A-Team',
     };
-    t.true(validate.manifest(schema).error, 'should return error');
+    t.ok(manifest(schema).error, 'should return error');
     t.end();
 });
 
-test('manifest.schema - schema contains unknown keys', (t) => {
+tap.test('manifest.schema - schema contains unknown keys', (t) => {
     const schema = {
         name: 'foo-bar',
         version: '1.0.0',
         content: 'http://www.finn.no/content',
         banan: 'likør',
     };
-    const res = validate.manifest(schema)
-    t.false(res.value.banan, 'should strip unknown keys');
+    const res = manifest(schema)
+    t.notOk(res.value.banan, 'should strip unknown keys');
     t.end();
 });
 
-test('manifest.schema - optional fields not set - should set defaults', (t) => {
+tap.test('manifest.schema - optional fields not set - should set defaults', (t) => {
     const schema = {
         name: 'foo-bar',
         version: '1.0.0',
         content: 'http://www.finn.no/content',
     };
-    const res = validate.manifest(schema)
+    const res = manifest(schema)
     t.equal(res.value.fallback, '');
     t.equal(res.value.team, '');
     t.same(res.value.css, []);
