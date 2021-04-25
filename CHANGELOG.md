@@ -1,3 +1,10 @@
+# [5.0.0-next.4](https://github.com/podium-lib/schemas/compare/v5.0.0-next.3...v5.0.0-next.4) (2021-04-25)
+
+
+### Bug Fixes
+
+* Use ESM workaround for dirname to find path to schema ([#113](https://github.com/podium-lib/schemas/issues/113)) ([ed40808](https://github.com/podium-lib/schemas/commit/ed408081e4c56e4ba794839459331d5454e0c5f3))
+
 # [5.0.0-next.3](https://github.com/podium-lib/schemas/compare/v5.0.0-next.2...v5.0.0-next.3) (2021-04-25)
 
 
