@@ -1,5 +1,5 @@
 export default {
-    input: 'lib/validate.js',
+    input: 'src/validate.js',
     external: [
         'ajv-formats',
         'find-up',
