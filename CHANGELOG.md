@@ -1,3 +1,10 @@
+# [5.0.0-next.3](https://github.com/podium-lib/schemas/compare/v5.0.0-next.2...v5.0.0-next.3) (2021-04-25)
+
+
+### Bug Fixes
+
+* Optimize the npm package ([#112](https://github.com/podium-lib/schemas/issues/112)) ([149ce28](https://github.com/podium-lib/schemas/commit/149ce28a9cd89c625c0a8ead1127e0c07d368cbb))
+
 # [5.0.0-next.2](https://github.com/podium-lib/schemas/compare/v5.0.0-next.1...v5.0.0-next.2) (2021-04-25)
 
 
