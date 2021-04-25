@@ -15,6 +15,13 @@ Resolves: https://github.com/podium-lib/issues/issues/26
 Co-authored-by: Trygve Lie <trygve.lie@finn.no>
 
 ## [4.0.3-next.1](https://github.com/podium-lib/schemas/compare/v4.0.2...v4.0.3-next.1) (2020-07-11)
+## [4.1.15](https://github.com/podium-lib/schemas/compare/v4.1.14...v4.1.15) (2021-04-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv to v8.1.0 ([#107](https://github.com/podium-lib/schemas/issues/107)) ([1d76bb6](https://github.com/podium-lib/schemas/commit/1d76bb617e90a31adbd36b16829c97be1c797bb0))
+
 ## [4.1.14](https://github.com/podium-lib/schemas/compare/v4.1.13...v4.1.14) (2021-04-02)
 
 
