@@ -2,7 +2,8 @@ export default {
     input: 'src/validate.js',
     external: [
         'ajv-formats',
-        'find-up',
+        'path',
+        'url',
         'ajv',
         'fs',
     ],
@@ -10,14 +11,8 @@ export default {
         {
             exports: 'auto',
             format: 'cjs',
-            dir: 'dist/cjs/',
+            dir: 'dist/',
             preserveModules: true,
-        },
-        {
-            exports: 'auto',
-            format: 'esm',
-            dir: 'dist/esm/',
-            preserveModules: true,
-        },
+        }
     ],
 };
