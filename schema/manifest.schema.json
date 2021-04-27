@@ -23,25 +23,6 @@
       "format": "uri-reference",
       "default": ""
     },
-    "assets": {
-      "type": "object",
-      "properties": {
-        "css": {
-          "type": "string",
-          "format": "uri-reference",
-          "default": ""
-        },
-        "js": {
-          "type": "string",
-          "format": "uri-reference",
-          "default": ""
-        }
-      },
-      "default": {
-        "css": "",
-        "js": ""
-      }
-    },
     "css": {
       "type": "array",
       "items": {
