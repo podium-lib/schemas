@@ -1,3 +1,10 @@
+## [4.1.19](https://github.com/podium-lib/schemas/compare/v4.1.18...v4.1.19) (2021-05-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv to v8.4.0 ([3c45d1e](https://github.com/podium-lib/schemas/commit/3c45d1e970f02c0d8e3c31ee578c46462a499c85))
+
 ## [4.1.18](https://github.com/podium-lib/schemas/compare/v4.1.17...v4.1.18) (2021-05-09)
 
 
