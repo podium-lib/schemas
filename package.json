@@ -48,6 +48,6 @@
     "eslint-plugin-prettier": "3.4.1",
     "prettier": "2.5.1",
     "semantic-release": "18.0.1",
-    "tap": "15.2.3"
+    "tap": "16.1.0"
   }
 }
