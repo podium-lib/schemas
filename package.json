@@ -27,17 +27,11 @@
     "dist",
     "src"
   ],
-  "main": "./dist/validate.js",
-  "exports": {
-    "require": "./dist/validate.js",
-    "import": "./src/validate.js"
-  },
+  "main": "./src/validate.js",
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "test": "tap --no-check-coverage",
-    "prepare": "npm run -s build",
-    "build": "rollup -c"
+    "test": "tap --no-coverage"
   },
   "dependencies": {
     "ajv": "8.11.0",
@@ -45,11 +39,7 @@
   },
   "devDependencies": {
     "@semantic-release/changelog": "6.0.1",
-    "@semantic-release/commit-analyzer": "9.0.2",
     "@semantic-release/git": "10.0.1",
-    "@semantic-release/github": "8.0.4",
-    "@semantic-release/npm": "9.0.1",
-    "@semantic-release/release-notes-generator": "10.0.3",
     "eslint": "8.14.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-config-prettier": "8.5.0",
