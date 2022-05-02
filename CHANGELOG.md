@@ -1,3 +1,27 @@
+# [5.0.0-next.5](https://github.com/podium-lib/schemas/compare/v5.0.0-next.4...v5.0.0-next.5) (2022-05-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv to v8.10.0 ([57f4065](https://github.com/podium-lib/schemas/commit/57f406586280c8aa9ec894fa04b8c88050ff851b))
+* **deps:** update dependency ajv to v8.11.0 ([5f3a961](https://github.com/podium-lib/schemas/commit/5f3a9619f7f7cf3b8368ba8e53a3e1f8b82bf573))
+* **deps:** update dependency ajv to v8.2.0 ([766d756](https://github.com/podium-lib/schemas/commit/766d756dd77836208dd90250f8e9e7a6bb467d4d))
+* **deps:** update dependency ajv to v8.3.0 ([7cb68ce](https://github.com/podium-lib/schemas/commit/7cb68cef97f22156faede1ea2b6889db01524921))
+* **deps:** update dependency ajv to v8.4.0 ([3c45d1e](https://github.com/podium-lib/schemas/commit/3c45d1e970f02c0d8e3c31ee578c46462a499c85))
+* **deps:** update dependency ajv to v8.5.0 ([cc175de](https://github.com/podium-lib/schemas/commit/cc175de19678e94928e2d260e3b014afab195856))
+* **deps:** update dependency ajv to v8.6.0 ([438bd64](https://github.com/podium-lib/schemas/commit/438bd64e4ed46c63b73bbcf35c87a37310674fc7))
+* **deps:** update dependency ajv to v8.6.1 ([8d288a6](https://github.com/podium-lib/schemas/commit/8d288a6543490db8147ddb8595a43c87da00cee2))
+* **deps:** update dependency ajv to v8.6.2 ([4142faa](https://github.com/podium-lib/schemas/commit/4142faad8716e23a09c756030c5be81c5195015a))
+* **deps:** update dependency ajv to v8.6.3 ([a6c641f](https://github.com/podium-lib/schemas/commit/a6c641f6758ef2f143cc8b4debdf61cd9080c676))
+* **deps:** update dependency ajv to v8.7.1 ([8f16d28](https://github.com/podium-lib/schemas/commit/8f16d289bc3b08c182d6525b236f0b1e0782e6a9))
+* **deps:** update dependency ajv to v8.8.0 ([2df5db1](https://github.com/podium-lib/schemas/commit/2df5db12ea012bcd53c8396cd64c2c1e655cc45f))
+* **deps:** update dependency ajv to v8.8.1 ([aa4b973](https://github.com/podium-lib/schemas/commit/aa4b9730f9cf0eabb73d5d9cc18823daf1baa258))
+* **deps:** update dependency ajv to v8.8.2 ([e8afafc](https://github.com/podium-lib/schemas/commit/e8afafc02c27744bfc303c15284c4ce1daef99ed))
+* **deps:** update dependency ajv to v8.9.0 ([607a494](https://github.com/podium-lib/schemas/commit/607a494538567138f18c798893756ce7e7947db8))
+* **deps:** update dependency ajv-formats to v2.1.0 ([d863293](https://github.com/podium-lib/schemas/commit/d8632934da49b3d437fb9f8564d9d75f47b60aff))
+* **deps:** update dependency ajv-formats to v2.1.1 ([1131278](https://github.com/podium-lib/schemas/commit/11312786466b9d351b7923d1f565a963c51c4556))
+* Pure ESM. Run tests on node 18.x ([#160](https://github.com/podium-lib/schemas/issues/160)) ([9c68d23](https://github.com/podium-lib/schemas/commit/9c68d23d377a811c09fa851d765eff075b701e0e))
+
 # [5.0.0-next.4](https://github.com/podium-lib/schemas/compare/v5.0.0-next.3...v5.0.0-next.4) (2021-04-25)
 ## [4.1.32](https://github.com/podium-lib/schemas/compare/v4.1.31...v4.1.32) (2022-03-23)
 
