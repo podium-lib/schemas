@@ -1,4 +1,5 @@
 # [5.0.0-next.4](https://github.com/podium-lib/schemas/compare/v5.0.0-next.3...v5.0.0-next.4) (2021-04-25)
+## [4.1.32](https://github.com/podium-lib/schemas/compare/v4.1.31...v4.1.32) (2022-03-23)
 
 
 ### Bug Fixes
@@ -6,6 +7,9 @@
 * Use ESM workaround for dirname to find path to schema ([#113](https://github.com/podium-lib/schemas/issues/113)) ([ed40808](https://github.com/podium-lib/schemas/commit/ed408081e4c56e4ba794839459331d5454e0c5f3))
 
 # [5.0.0-next.3](https://github.com/podium-lib/schemas/compare/v5.0.0-next.2...v5.0.0-next.3) (2021-04-25)
+* **deps:** update dependency ajv to v8.11.0 ([5f3a961](https://github.com/podium-lib/schemas/commit/5f3a9619f7f7cf3b8368ba8e53a3e1f8b82bf573))
+
+## [4.1.31](https://github.com/podium-lib/schemas/compare/v4.1.30...v4.1.31) (2022-02-04)
 
 
 ### Bug Fixes
@@ -13,6 +17,9 @@
 * Optimize the npm package ([#112](https://github.com/podium-lib/schemas/issues/112)) ([149ce28](https://github.com/podium-lib/schemas/commit/149ce28a9cd89c625c0a8ead1127e0c07d368cbb))
 
 # [5.0.0-next.2](https://github.com/podium-lib/schemas/compare/v5.0.0-next.1...v5.0.0-next.2) (2021-04-25)
+* **deps:** update dependency ajv to v8.10.0 ([57f4065](https://github.com/podium-lib/schemas/commit/57f406586280c8aa9ec894fa04b8c88050ff851b))
+
+## [4.1.30](https://github.com/podium-lib/schemas/compare/v4.1.29...v4.1.30) (2022-01-15)
 
 
 ### Bug Fixes
@@ -130,6 +137,106 @@ Resolves: https://github.com/podium-lib/issues/issues/26
 Co-authored-by: Trygve Lie <trygve.lie@finn.no>
 
 ## [4.0.3-next.1](https://github.com/podium-lib/schemas/compare/v4.0.2...v4.0.3-next.1) (2020-07-11)
+* **deps:** update dependency ajv to v8.9.0 ([607a494](https://github.com/podium-lib/schemas/commit/607a494538567138f18c798893756ce7e7947db8))
+
+## [4.1.29](https://github.com/podium-lib/schemas/compare/v4.1.28...v4.1.29) (2021-11-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv to v8.8.2 ([e8afafc](https://github.com/podium-lib/schemas/commit/e8afafc02c27744bfc303c15284c4ce1daef99ed))
+
+## [4.1.28](https://github.com/podium-lib/schemas/compare/v4.1.27...v4.1.28) (2021-11-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv to v8.8.1 ([aa4b973](https://github.com/podium-lib/schemas/commit/aa4b9730f9cf0eabb73d5d9cc18823daf1baa258))
+
+## [4.1.27](https://github.com/podium-lib/schemas/compare/v4.1.26...v4.1.27) (2021-11-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv to v8.8.0 ([2df5db1](https://github.com/podium-lib/schemas/commit/2df5db12ea012bcd53c8396cd64c2c1e655cc45f))
+
+## [4.1.26](https://github.com/podium-lib/schemas/compare/v4.1.25...v4.1.26) (2021-11-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv to v8.7.1 ([8f16d28](https://github.com/podium-lib/schemas/commit/8f16d289bc3b08c182d6525b236f0b1e0782e6a9))
+
+## [4.1.25](https://github.com/podium-lib/schemas/compare/v4.1.24...v4.1.25) (2021-09-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv to v8.6.3 ([a6c641f](https://github.com/podium-lib/schemas/commit/a6c641f6758ef2f143cc8b4debdf61cd9080c676))
+
+## [4.1.24](https://github.com/podium-lib/schemas/compare/v4.1.23...v4.1.24) (2021-08-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv-formats to v2.1.1 ([1131278](https://github.com/podium-lib/schemas/commit/11312786466b9d351b7923d1f565a963c51c4556))
+
+## [4.1.23](https://github.com/podium-lib/schemas/compare/v4.1.22...v4.1.23) (2021-07-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv to v8.6.2 ([4142faa](https://github.com/podium-lib/schemas/commit/4142faad8716e23a09c756030c5be81c5195015a))
+
+## [4.1.22](https://github.com/podium-lib/schemas/compare/v4.1.21...v4.1.22) (2021-07-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv to v8.6.1 ([8d288a6](https://github.com/podium-lib/schemas/commit/8d288a6543490db8147ddb8595a43c87da00cee2))
+
+## [4.1.21](https://github.com/podium-lib/schemas/compare/v4.1.20...v4.1.21) (2021-06-06)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv to v8.6.0 ([438bd64](https://github.com/podium-lib/schemas/commit/438bd64e4ed46c63b73bbcf35c87a37310674fc7))
+
+## [4.1.20](https://github.com/podium-lib/schemas/compare/v4.1.19...v4.1.20) (2021-05-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv to v8.5.0 ([cc175de](https://github.com/podium-lib/schemas/commit/cc175de19678e94928e2d260e3b014afab195856))
+
+## [4.1.19](https://github.com/podium-lib/schemas/compare/v4.1.18...v4.1.19) (2021-05-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv to v8.4.0 ([3c45d1e](https://github.com/podium-lib/schemas/commit/3c45d1e970f02c0d8e3c31ee578c46462a499c85))
+
+## [4.1.18](https://github.com/podium-lib/schemas/compare/v4.1.17...v4.1.18) (2021-05-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv to v8.3.0 ([7cb68ce](https://github.com/podium-lib/schemas/commit/7cb68cef97f22156faede1ea2b6889db01524921))
+
+## [4.1.17](https://github.com/podium-lib/schemas/compare/v4.1.16...v4.1.17) (2021-05-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv-formats to v2.1.0 ([d863293](https://github.com/podium-lib/schemas/commit/d8632934da49b3d437fb9f8564d9d75f47b60aff))
+
+## [4.1.16](https://github.com/podium-lib/schemas/compare/v4.1.15...v4.1.16) (2021-04-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ajv to v8.2.0 ([766d756](https://github.com/podium-lib/schemas/commit/766d756dd77836208dd90250f8e9e7a6bb467d4d))
+
 ## [4.1.15](https://github.com/podium-lib/schemas/compare/v4.1.14...v4.1.15) (2021-04-11)
 
 
