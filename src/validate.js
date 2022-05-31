@@ -2,7 +2,9 @@ import Ajv from 'ajv';
 import formats from 'ajv-formats';
 import schema from './schema.js';
 
-const createValidator = (jsonSchema, ajvOptions) => {
+const createValidator = (jsonSchema, ajvOptions = {
+    allowUnionTypes: true,
+}) => {
     const ajv = new Ajv(ajvOptions);
     formats(ajv); // Needed to support "uri"
     const validate = ajv.compile({
@@ -25,6 +27,7 @@ const withTrimmer = validator => data =>
 
 export const manifest = createValidator(schema, {
     removeAdditional: true,
+    allowUnionTypes: true,
     useDefaults: true,
 });
 

@@ -194,13 +194,94 @@ tap.test('manifest.css - empty array', (t) => {
 // .proxy
 //
 
-tap.test('manifest.proxy - empty object', (t) => {
-    t.notOk(proxy({}).error, 'should not return error');
+tap.test('manifest.proxy - empty array', (t) => {
+    t.notOk(proxy([]).error, 'should not return error');
     t.end();
 });
 
-tap.test('manifest.proxy - not object', (t) => {
+tap.test('manifest.proxy - not array or object', (t) => {
     t.ok(proxy('').error, 'should return error');
+    t.ok(proxy(2).error, 'should return error');
+    t.ok(proxy(true).error, 'should return error');
+    t.end();
+});
+
+tap.test('manifest.proxy - proxy item is valid object', (t) => {
+    const item = {
+        target: 'http://www.finn.no/foo',
+        name: 'foo',
+    };
+    t.notOk(proxy([item]).error, 'should not return error');
+    t.end();
+});
+
+tap.test('manifest.proxy - proxy item is invalid object', (t) => {
+    const item = {
+        foo: 'http://www.finn.no/foo',
+        bar: 'foo',
+    };
+    t.ok(proxy([item]).error, 'should return error');
+    t.end();
+});
+
+tap.test('manifest.proxy - proxy item is missing "name" property', (t) => {
+    const item = {
+        target: 'http://www.finn.no/foo',
+    };
+    t.ok(proxy([item]).error, 'should return error');
+    t.end();
+});
+
+tap.test('manifest.proxy - proxy item is missing "target" property', (t) => {
+    const item = {
+        name: "foo",
+    };
+    t.ok(proxy([item]).error, 'should return error');
+    t.end();
+});
+
+tap.test('manifest.proxy - proxy item has illegal value for "target" property', (t) => {
+    const item = {
+        target: 2,
+        name: "foo",
+    };
+    t.ok(proxy([item]).error, 'should return error');
+    t.end();
+});
+
+tap.test('manifest.proxy - proxy item has illegal value for "name" property', (t) => {
+    const item = {
+        target: 'http://www.finn.no/foo',
+        name: 2,
+    };
+    t.ok(proxy([item]).error, 'should return error');
+    t.end();
+});
+
+tap.test('manifest.proxy - proxy item has relative url for "target" property', (t) => {
+    const item = {
+        target: '/foo',
+        name: 'foo',
+    };
+    t.notOk(proxy([item]).error, 'should not return error');
+    t.end();
+});
+
+tap.test('manifest.proxy - proxy has more than 4 items', (t) => {
+    const item = {
+        target: 'http://www.finn.no/foo',
+        name: 'foo',
+    };
+    t.ok(proxy([item, item, item, item, item]).error, 'should return error');
+    t.end();
+});
+
+//
+// .proxy - LEGACY OBJECT SUPPORT
+//
+
+tap.test('manifest.proxy - empty object', (t) => {
+    t.notOk(proxy({}).error, 'should not return error');
     t.end();
 });
 

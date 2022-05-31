@@ -104,16 +104,41 @@
       },
       "default": []
     },
+
     "proxy": {
-      "type": "object",
+      "type": ["object", "array"],
       "default": {},
-      "maxProperties": 4,
-      "patternProperties": {
-        ".*": {
-          "type": "string",
-          "format": "uri-reference"
+      "anyOf": [
+        {
+          "type": "object",
+          "maxProperties": 4,
+          "patternProperties": {
+            ".*": {
+              "type": "string",
+              "format": "uri-reference"
+            }
+          }
+        },
+        {
+          "type": "array",
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "target": {
+                "type": "string",
+                "format": "uri-reference",
+                "minLength": 1
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "required": ["target", "name"]
+          }
         }
-      }
+      ]
     },
     "team": {
       "type": "string",
