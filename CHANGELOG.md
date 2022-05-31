@@ -1,3 +1,10 @@
+# [5.0.0-next.6](https://github.com/podium-lib/schemas/compare/v5.0.0-next.5...v5.0.0-next.6) (2022-05-31)
+
+
+### Features
+
+* Adding support for proxy objects ([#161](https://github.com/podium-lib/schemas/issues/161)) ([6f5de4e](https://github.com/podium-lib/schemas/commit/6f5de4e430c2a2662da079b801e24882d9ba8bc1))
+
 # [5.0.0-next.5](https://github.com/podium-lib/schemas/compare/v5.0.0-next.4...v5.0.0-next.5) (2022-05-02)
 
 
