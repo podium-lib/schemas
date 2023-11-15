@@ -78,6 +78,14 @@
           },
           "as": {
             "type": "string"
+          },
+          "strategy": {
+            "type": "string",
+            "pattern": "^lazy|beforeInteractive|afterInteractive$"
+          },
+          "scope": {
+            "type": "string",
+            "pattern": "^content|fallback|all$"
           }
         },
         "required": ["value"]
@@ -117,6 +125,14 @@
           "defer": {
             "type": "boolean",
             "default": false
+          },
+          "strategy": {
+            "type": "string",
+            "pattern": "^lazy|beforeInteractive|afterInteractive$"
+          },
+          "scope": {
+            "type": "string",
+            "pattern": "^content|fallback|all$"
           }
         },
         "required": ["value"]
