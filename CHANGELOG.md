@@ -1,3 +1,10 @@
+# [4.2.0](https://github.com/podium-lib/schemas/compare/v4.1.34...v4.2.0) (2023-11-16)
+
+
+### Features
+
+* add asset strategy and scope fields ([c23e9b0](https://github.com/podium-lib/schemas/commit/c23e9b07a082cb7936a36e8c48b763c68735fea5))
+
 ## [4.1.34](https://github.com/podium-lib/schemas/compare/v4.1.33...v4.1.34) (2023-01-03)
 
 
