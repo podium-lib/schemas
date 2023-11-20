@@ -540,3 +540,110 @@ tap.test('manifest.schema - optional fields not set - should set defaults', (t) 
     t.same(res.value.proxy, {});
     t.end();
 });
+
+/* Assets strategy field */
+
+const testSchema = (schema) => ({
+    name: 'foo-bar',
+    version: '1.0.0',
+    content: 'http://www.finn.no/content',
+    ...schema,
+});
+
+tap.test('manifest.schema - css - strategy - afterInteractive is valid', (t) => {
+    const schema = testSchema({ css: [{ value: 'http://www.finn.no/podlet/css/a', strategy: 'afterInteractive' }] });
+    t.equal(manifest(schema).error, false, 'should not return error');
+    t.end();
+});
+tap.test('manifest.schema - css - strategy - beforeInteractive is valid', (t) => {
+    const schema = testSchema({ css: [{ value: 'http://www.finn.no/podlet/css/a', strategy: 'beforeInteractive' }] });
+    t.equal(manifest(schema).error, false, 'should not return error');
+    t.end();
+});
+tap.test('manifest.schema - css - strategy - lazy is valid', (t) => {
+    const schema = testSchema({ css: [{ value: 'http://www.finn.no/podlet/css/a', strategy: 'lazy' }] });
+    t.equal(manifest(schema).error, false, 'should not return error');
+    t.end();
+});
+
+tap.test('manifest.schema - css - strategy - bar is not valid', (t) => {
+    const schema = testSchema({ css: [{ value: 'http://www.finn.no/podlet/css/a', strategy: 'bar' }] });
+    t.equal(manifest(schema).error[0].instancePath, '/css/0/strategy', 'should match path');
+    t.equal(manifest(schema).error[0].message, 'must match pattern "^lazy|beforeInteractive|afterInteractive$"', 'should match pattern');
+    t.end();
+});
+
+tap.test('manifest.schema - js - strategy - afterInteractive is valid', (t) => {
+    const schema = testSchema({ js: [{ value: 'http://www.finn.no/podlet/js/a', strategy: 'afterInteractive' }] });
+    t.equal(manifest(schema).error, false, 'should not return error');
+    t.end();
+});
+tap.test('manifest.schema - js - strategy - beforeInteractive is valid', (t) => {
+    const schema = testSchema({ js: [{ value: 'http://www.finn.no/podlet/js/a', strategy: 'beforeInteractive' }] });
+    t.equal(manifest(schema).error, false, 'should not return error');
+    t.end();
+});
+tap.test('manifest.schema - js - strategy - lazy is valid', (t) => {
+    const schema = testSchema({ js: [{ value: 'http://www.finn.no/podlet/js/a', strategy: 'lazy' }] });
+    t.equal(manifest(schema).error, false, 'should not return error');
+    t.end();
+});
+
+tap.test('manifest.schema - js - strategy - bar is not valid', (t) => {
+    const schema = testSchema({ js: [{ value: 'http://www.finn.no/podlet/js/a', strategy: 'bar' }] });
+    t.equal(manifest(schema).error[0].instancePath, '/js/0/strategy', 'should match path');
+    t.equal(manifest(schema).error[0].message, 'must match pattern "^lazy|beforeInteractive|afterInteractive$"', 'should match pattern');
+    t.end();
+});
+
+/* Assets scope field */
+
+tap.test('manifest.schema - css - scope - content is valid', (t) => {
+  const schema = testSchema({ css: [{ value: 'http://www.finn.no/podlet/css/a', scope: 'content' }] });
+  t.equal(manifest(schema).error, false, 'should not return error');
+  t.end();
+});
+
+tap.test('manifest.schema - css - scope - fallback is valid', (t) => {
+  const schema = testSchema({ css: [{ value: 'http://www.finn.no/podlet/css/a', scope: 'fallback' }] });
+  t.equal(manifest(schema).error, false, 'should not return error');
+  t.end();
+});
+
+tap.test('manifest.schema - css - scope - all is valid', (t) => {
+  const schema = testSchema({ css: [{ value: 'http://www.finn.no/podlet/css/a', scope: 'all' }] });
+  t.equal(manifest(schema).error, false, 'should not return error');
+  t.end();
+});
+
+tap.test('manifest.schema - css - scope - foo is not valid', (t) => {
+  const schema = testSchema({ css: [{ value: 'http://www.finn.no/podlet/css/a', scope: 'foo' }] });
+  t.equal(manifest(schema).error[0].instancePath, '/css/0/scope', 'should match path');
+  t.equal(manifest(schema).error[0].message, 'must match pattern "^content|fallback|all$"', 'should match pattern');
+  t.end();
+});
+
+tap.test('manifest.schema - js - scope - content is valid', (t) => {
+  const schema = testSchema({ js: [{ value: 'http://www.finn.no/podlet/js/a', scope: 'content' }] });
+  t.equal(manifest(schema).error, false, 'should not return error');
+  t.end();
+});
+
+tap.test('manifest.schema - js - scope - fallback is valid', (t) => {
+  const schema = testSchema({ js: [{ value: 'http://www.finn.no/podlet/js/a', scope: 'fallback' }] });
+  t.equal(manifest(schema).error, false, 'should not return error');
+  t.end();
+});
+
+tap.test('manifest.schema - js - scope - all is valid', (t) => {
+  const schema = testSchema({ js: [{ value: 'http://www.finn.no/podlet/js/a', scope: 'all' }] });
+  t.equal(manifest(schema).error, false, 'should not return error');
+  t.end();
+});
+
+tap.test('manifest.schema - scope - js is not valid', (t) => {
+  const schema = testSchema({ js: [{ value: 'http://www.finn.no/podlet/js/a', scope: 'foo' }] });
+  t.equal(manifest(schema).error[0].instancePath, '/js/0/scope', 'should match path');
+  t.equal(manifest(schema).error[0].message, 'must match pattern "^content|fallback|all$"', 'should match pattern');
+  t.end();
+});
