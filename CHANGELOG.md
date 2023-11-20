@@ -1,5 +1,22 @@
-# [5.0.0-next.6](https://github.com/podium-lib/schemas/compare/v5.0.0-next.5...v5.0.0-next.6) (2022-05-31)
+# [4.2.0](https://github.com/podium-lib/schemas/compare/v4.1.34...v4.2.0) (2023-11-16)
 
+### Features
+
+* add asset strategy and scope fields ([c23e9b0](https://github.com/podium-lib/schemas/commit/c23e9b07a082cb7936a36e8c48b763c68735fea5))
+
+## [4.1.34](https://github.com/podium-lib/schemas/compare/v4.1.33...v4.1.34) (2023-01-03)
+
+### Bug Fixes
+
+* **deps:** update dependency ajv to v8.12.0 ([f98b5ef](https://github.com/podium-lib/schemas/commit/f98b5efca4ebaa089ac59a85bfce397c7a85468d))
+
+## [4.1.33](https://github.com/podium-lib/schemas/compare/v4.1.32...v4.1.33) (2022-11-14)
+
+### Bug Fixes
+
+* **deps:** update dependency ajv to v8.11.2 ([d584bd8](https://github.com/podium-lib/schemas/commit/d584bd88de7ba25c3954bf7a608691a68bcb794e))
+
+# [5.0.0-next.6](https://github.com/podium-lib/schemas/compare/v5.0.0-next.5...v5.0.0-next.6) (2022-05-31)
 
 ### Features
 
