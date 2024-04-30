@@ -34,7 +34,7 @@
     "test": "tap --disable-coverage --allow-empty-coverage"
   },
   "dependencies": {
-    "ajv": "8.12.0",
+    "ajv": "8.13.0",
     "ajv-formats": "2.1.1"
   },
   "devDependencies": {
