@@ -11,5 +11,5 @@ node_modules/**/*
 tmp/**/*
 .idea
 .idea/**/*
-dist
+types/
 .tap
