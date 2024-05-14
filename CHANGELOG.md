@@ -1,3 +1,10 @@
+## [5.0.2](https://github.com/podium-lib/schemas/compare/v5.0.1...v5.0.2) (2024-05-14)
+
+
+### Bug Fixes
+
+* type definitions for schema and validators ([#220](https://github.com/podium-lib/schemas/issues/220)) ([69050ae](https://github.com/podium-lib/schemas/commit/69050ae7a8d4a20275dadf301d7368a1f5bd9510))
+
 ## [5.0.1](https://github.com/podium-lib/schemas/compare/v5.0.0...v5.0.1) (2024-04-30)
 
 
