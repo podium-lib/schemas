@@ -1,6 +1,6 @@
 {
   "name": "@podium/schemas",
-  "version": "5.0.3",
+  "version": "5.0.4",
   "type": "module",
   "description": "Schemas for validating the @podium contract.",
   "license": "MIT",
