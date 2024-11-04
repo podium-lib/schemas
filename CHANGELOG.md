@@ -1,3 +1,10 @@
+# [5.1.0](https://github.com/podium-lib/schemas/compare/v5.0.6...v5.1.0) (2024-11-04)
+
+
+### Features
+
+* add shadow-dom strategy ([16c3fae](https://github.com/podium-lib/schemas/commit/16c3fae52af5440da78a1187d9e3636b577683ff))
+
 ## [5.0.6](https://github.com/podium-lib/schemas/compare/v5.0.5...v5.0.6) (2024-07-13)
 
 
