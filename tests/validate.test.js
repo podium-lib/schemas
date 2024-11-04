@@ -687,7 +687,7 @@ tap.test('manifest.schema - css - strategy - bar is not valid', (t) => {
     );
     t.equal(
         manifest(schema).error[0].message,
-        'must match pattern "^lazy|beforeInteractive|afterInteractive$"',
+        'must match pattern "^lazy|beforeInteractive|afterInteractive|shadow-dom$"',
         'should match pattern',
     );
     t.end();
@@ -739,7 +739,7 @@ tap.test('manifest.schema - js - strategy - bar is not valid', (t) => {
     );
     t.equal(
         manifest(schema).error[0].message,
-        'must match pattern "^lazy|beforeInteractive|afterInteractive$"',
+        'must match pattern "^lazy|beforeInteractive|afterInteractive|shadow-dom$"',
         'should match pattern',
     );
     t.end();
