@@ -62,7 +62,7 @@
           },
           "strategy": {
             "type": "string",
-            "pattern": "^lazy|beforeInteractive|afterInteractive$"
+            "pattern": "^lazy|beforeInteractive|afterInteractive|shadow-dom$"
           },
           "scope": {
             "type": "string",
@@ -109,7 +109,7 @@
           },
           "strategy": {
             "type": "string",
-            "pattern": "^lazy|beforeInteractive|afterInteractive$"
+            "pattern": "^lazy|beforeInteractive|afterInteractive|shadow-dom$"
           },
           "scope": {
             "type": "string",
