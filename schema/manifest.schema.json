@@ -62,11 +62,15 @@
           },
           "strategy": {
             "type": "string",
-            "pattern": "^lazy|beforeInteractive|afterInteractive|shadow-dom$"
+            "minLength": 2,
+            "maxLength": 100,
+            "pattern": "^[a-zA-Z_-]*$"
           },
           "scope": {
             "type": "string",
-            "pattern": "^content|fallback|all$"
+            "minLength": 2,
+            "maxLength": 100,
+            "pattern": "^[a-zA-Z_-]*$"
           }
         },
         "required": ["value"]
@@ -109,11 +113,15 @@
           },
           "strategy": {
             "type": "string",
-            "pattern": "^lazy|beforeInteractive|afterInteractive|shadow-dom$"
+            "minLength": 2,
+            "maxLength": 100,
+            "pattern": "^[a-zA-Z_-]*$"
           },
           "scope": {
             "type": "string",
-            "pattern": "^content|fallback|all$"
+            "minLength": 2,
+            "maxLength": 100,
+            "pattern": "^[a-zA-Z_-]*$"
           }
         },
         "required": ["value"]

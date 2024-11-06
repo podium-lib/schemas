@@ -676,22 +676,19 @@ tap.test('manifest.schema - css - strategy - lazy is valid', (t) => {
     t.end();
 });
 
-tap.test('manifest.schema - css - strategy - bar is not valid', (t) => {
-    const schema = testSchema({
-        css: [{ value: 'http://www.finn.no/podlet/css/a', strategy: 'bar' }],
-    });
-    t.equal(
-        manifest(schema).error[0].instancePath,
-        '/css/0/strategy',
-        'should match path',
-    );
-    t.equal(
-        manifest(schema).error[0].message,
-        'must match pattern "^lazy|beforeInteractive|afterInteractive|shadow-dom$"',
-        'should match pattern',
-    );
-    t.end();
-});
+tap.test(
+    'manifest.schema - css - strategy - bar is valid to allow clients to upgrade gradually',
+    (t) => {
+        const schema = testSchema({
+            css: [
+                { value: 'http://www.finn.no/podlet/css/a', strategy: 'bar' },
+            ],
+        });
+        t.equal(manifest(schema).error, false, 'should not return error');
+
+        t.end();
+    },
+);
 
 tap.test('manifest.schema - js - strategy - afterInteractive is valid', (t) => {
     const schema = testSchema({
@@ -728,22 +725,17 @@ tap.test('manifest.schema - js - strategy - lazy is valid', (t) => {
     t.end();
 });
 
-tap.test('manifest.schema - js - strategy - bar is not valid', (t) => {
-    const schema = testSchema({
-        js: [{ value: 'http://www.finn.no/podlet/js/a', strategy: 'bar' }],
-    });
-    t.equal(
-        manifest(schema).error[0].instancePath,
-        '/js/0/strategy',
-        'should match path',
-    );
-    t.equal(
-        manifest(schema).error[0].message,
-        'must match pattern "^lazy|beforeInteractive|afterInteractive|shadow-dom$"',
-        'should match pattern',
-    );
-    t.end();
-});
+tap.test(
+    'manifest.schema - js - strategy - bar is valid to allow clients to upgrade gradually',
+    (t) => {
+        const schema = testSchema({
+            js: [{ value: 'http://www.finn.no/podlet/js/a', strategy: 'bar' }],
+        });
+        t.equal(manifest(schema).error, false, 'should not return error');
+
+        t.end();
+    },
+);
 
 /* Assets scope field */
 
@@ -771,22 +763,17 @@ tap.test('manifest.schema - css - scope - all is valid', (t) => {
     t.end();
 });
 
-tap.test('manifest.schema - css - scope - foo is not valid', (t) => {
-    const schema = testSchema({
-        css: [{ value: 'http://www.finn.no/podlet/css/a', scope: 'foo' }],
-    });
-    t.equal(
-        manifest(schema).error[0].instancePath,
-        '/css/0/scope',
-        'should match path',
-    );
-    t.equal(
-        manifest(schema).error[0].message,
-        'must match pattern "^content|fallback|all$"',
-        'should match pattern',
-    );
-    t.end();
-});
+tap.test(
+    'manifest.schema - css - scope - foo is valid to allow clients to upgrade gradually',
+    (t) => {
+        const schema = testSchema({
+            css: [{ value: 'http://www.finn.no/podlet/css/a', scope: 'foo' }],
+        });
+
+        t.equal(manifest(schema).error, false, 'should not return error');
+        t.end();
+    },
+);
 
 tap.test('manifest.schema - js - scope - content is valid', (t) => {
     const schema = testSchema({
@@ -812,19 +799,14 @@ tap.test('manifest.schema - js - scope - all is valid', (t) => {
     t.end();
 });
 
-tap.test('manifest.schema - scope - js is not valid', (t) => {
-    const schema = testSchema({
-        js: [{ value: 'http://www.finn.no/podlet/js/a', scope: 'foo' }],
-    });
-    t.equal(
-        manifest(schema).error[0].instancePath,
-        '/js/0/scope',
-        'should match path',
-    );
-    t.equal(
-        manifest(schema).error[0].message,
-        'must match pattern "^content|fallback|all$"',
-        'should match pattern',
-    );
-    t.end();
-});
+tap.test(
+    'manifest.schema - scope - foo is valid to allow clients to upgrade gradually',
+    (t) => {
+        const schema = testSchema({
+            js: [{ value: 'http://www.finn.no/podlet/js/a', scope: 'foo' }],
+        });
+
+        t.equal(manifest(schema).error, false, 'should not return error');
+        t.end();
+    },
+);
