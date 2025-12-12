@@ -1,3 +1,10 @@
+## [5.1.1](https://github.com/podium-lib/schemas/compare/v5.1.0...v5.1.1) (2025-12-12)
+
+
+### Bug Fixes
+
+* **deps:** update ajv-formats ([058c3e2](https://github.com/podium-lib/schemas/commit/058c3e253bf08ebdb4e9ed343642a2d4bfe74092))
+
 # [5.1.0](https://github.com/podium-lib/schemas/compare/v5.0.6...v5.1.0) (2024-11-04)
 
 
