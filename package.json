@@ -48,7 +48,7 @@
     "@podium/semantic-release-config": "3.0.0",
     "@podium/typescript-config": "1.0.0",
     "@types/node": "24.10.9",
-    "eslint": "9.39.2",
+    "eslint": "9.39.3",
     "npm-run-all2": "8.0.4",
     "prettier": "3.8.1",
     "semantic-release": "25.0.2",
