@@ -1,58 +1,58 @@
 {
-  "name": "@podium/schemas",
-  "version": "5.1.2",
-  "type": "module",
-  "description": "Schemas for validating the @podium contract.",
-  "license": "MIT",
-  "keywords": [
-    "micro services",
-    "micro frontend",
-    "components",
-    "podium"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:podium-lib/schemas.git"
-  },
-  "bugs": {
-    "url": "https://github.com/podium-lib/issues"
-  },
-  "homepage": "https://podium-lib.io/",
-  "files": [
-    "package.json",
-    "CHANGELOG.md",
-    "README.md",
-    "LICENSE",
-    "schema",
-    "dist",
-    "src",
-    "types"
-  ],
-  "main": "./src/validate.js",
-  "types": "./types/validate.d.ts",
-  "scripts": {
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix .",
-    "test": "tap tests/*.js --disable-coverage --allow-empty-coverage",
-    "test:snapshots:update": "tap --snapshot",
-    "types": "run-s types:tsc types:test",
-    "types:tsc": "tsc",
-    "types:test": "tsc --project tsconfig.test.json"
-  },
-  "dependencies": {
-    "ajv": "8.18.0",
-    "ajv-formats": "3.0.1"
-  },
-  "devDependencies": {
-    "@podium/eslint-config": "1.0.21",
-    "@podium/semantic-release-config": "3.0.4",
-    "@podium/typescript-config": "1.0.0",
-    "@types/node": "24.10.9",
-    "eslint": "9.39.3",
-    "npm-run-all2": "8.0.4",
-    "prettier": "3.8.1",
-    "semantic-release": "25.0.3",
-    "tap": "21.5.0",
-    "typescript": "5.9.3"
-  }
+    "name": "@podium/schemas",
+    "version": "5.1.2",
+    "type": "module",
+    "description": "Schemas for validating the @podium contract.",
+    "license": "MIT",
+    "keywords": [
+        "micro services",
+        "micro frontend",
+        "components",
+        "podium"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:podium-lib/schemas.git"
+    },
+    "bugs": {
+        "url": "https://github.com/podium-lib/issues"
+    },
+    "homepage": "https://podium-lib.io/",
+    "files": [
+        "package.json",
+        "CHANGELOG.md",
+        "README.md",
+        "LICENSE",
+        "schema",
+        "dist",
+        "src",
+        "types"
+    ],
+    "main": "./src/validate.js",
+    "types": "./types/validate.d.ts",
+    "scripts": {
+        "lint": "eslint .",
+        "lint:fix": "eslint --fix .",
+        "test": "tap tests/*.js --disable-coverage --allow-empty-coverage",
+        "test:snapshots:update": "tap --snapshot",
+        "types": "run-s types:tsc types:test",
+        "types:tsc": "tsc",
+        "types:test": "tsc --project tsconfig.test.json"
+    },
+    "dependencies": {
+        "ajv": "8.18.0",
+        "ajv-formats": "3.0.1"
+    },
+    "devDependencies": {
+        "@podium/eslint-config": "2.0.2",
+        "@podium/semantic-release-config": "3.0.4",
+        "@podium/typescript-config": "1.0.0",
+        "@types/node": "24.10.9",
+        "eslint": "9.39.3",
+        "npm-run-all2": "8.0.4",
+        "prettier": "3.8.1",
+        "semantic-release": "25.0.3",
+        "tap": "21.5.0",
+        "typescript": "5.9.3"
+    }
 }
