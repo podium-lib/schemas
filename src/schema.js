@@ -21,6 +21,7 @@ const file = fs.readFileSync(schema, 'utf-8');
  * @property {string} [media]
  * @property {string} [rel="stylesheet"]
  * @property {string} [as]
+ * @property {"high" | "low" | "auto"} [fetchpriority]
  * @property {"lazy" | "beforeInteractive" | "afterInteractive"} [strategy]
  * @property {"content" | "fallback" | "all"} [scope]
  */
@@ -34,6 +35,7 @@ const file = fs.readFileSync(schema, 'utf-8');
  * @property {boolean} [nomodule=false]
  * @property {boolean} [async=false]
  * @property {boolean} [defer=false]
+ * @property {"high" | "low" | "auto"} [fetchpriority]
  * @property {"lazy" | "beforeInteractive" | "afterInteractive"} [strategy]
  * @property {"content" | "fallback" | "all"} [scope]
  */

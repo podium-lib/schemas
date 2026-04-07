@@ -629,14 +629,110 @@ tap.test(
     },
 );
 
-/* Assets strategy field */
-
 const testSchema = (schema) => ({
     name: 'foo-bar',
     version: '1.0.0',
     content: 'http://www.finn.no/content',
     ...schema,
 });
+
+/* Assets fetchpriority field */
+
+tap.test('manifest.schema - css - fetchpriority - high is valid', (t) => {
+    const schema = testSchema({
+        css: [
+            { value: 'http://www.finn.no/podlet/css/a', fetchpriority: 'high' },
+        ],
+    });
+    t.equal(manifest(schema).error, false, 'should not return error');
+    t.end();
+});
+
+tap.test('manifest.schema - css - fetchpriority - low is valid', (t) => {
+    const schema = testSchema({
+        css: [
+            { value: 'http://www.finn.no/podlet/css/a', fetchpriority: 'low' },
+        ],
+    });
+    t.equal(manifest(schema).error, false, 'should not return error');
+    t.end();
+});
+
+tap.test('manifest.schema - css - fetchpriority - auto is valid', (t) => {
+    const schema = testSchema({
+        css: [
+            { value: 'http://www.finn.no/podlet/css/a', fetchpriority: 'auto' },
+        ],
+    });
+    t.equal(manifest(schema).error, false, 'should not return error');
+    t.end();
+});
+
+tap.test('manifest.schema - css - fetchpriority - bar is not valid', (t) => {
+    const schema = testSchema({
+        css: [
+            { value: 'http://www.finn.no/podlet/css/a', fetchpriority: 'bar' },
+        ],
+    });
+    t.equal(
+        manifest(schema).error[0].instancePath,
+        '/css/0/fetchpriority',
+        'should match path',
+    );
+    t.equal(
+        manifest(schema).error[0].message,
+        'must match pattern "^high|low|auto$"',
+        'should match pattern',
+    );
+    t.end();
+});
+
+tap.test('manifest.schema - js - fetchpriority - high is valid', (t) => {
+    const schema = testSchema({
+        js: [
+            { value: 'http://www.finn.no/podlet/js/a', fetchpriority: 'high' },
+        ],
+    });
+    t.equal(manifest(schema).error, false, 'should not return error');
+    t.end();
+});
+
+tap.test('manifest.schema - js - fetchpriority - low is valid', (t) => {
+    const schema = testSchema({
+        js: [{ value: 'http://www.finn.no/podlet/js/a', fetchpriority: 'low' }],
+    });
+    t.equal(manifest(schema).error, false, 'should not return error');
+    t.end();
+});
+
+tap.test('manifest.schema - js - fetchpriority - auto is valid', (t) => {
+    const schema = testSchema({
+        js: [
+            { value: 'http://www.finn.no/podlet/js/a', fetchpriority: 'auto' },
+        ],
+    });
+    t.equal(manifest(schema).error, false, 'should not return error');
+    t.end();
+});
+
+tap.test('manifest.schema - js - fetchpriority - bar is not valid', (t) => {
+    const schema = testSchema({
+        js: [{ value: 'http://www.finn.no/podlet/js/a', fetchpriority: 'bar' }],
+    });
+    t.equal(
+        manifest(schema).error[0].instancePath,
+        '/js/0/fetchpriority',
+        'should match path',
+    );
+    t.equal(
+        manifest(schema).error[0].message,
+        'must match pattern "^high|low|auto$"',
+        'should match pattern',
+    );
+    t.end();
+});
+
+/* Assets strategy field */
 
 tap.test(
     'manifest.schema - css - strategy - afterInteractive is valid',

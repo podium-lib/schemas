@@ -60,6 +60,10 @@
           "as": {
             "type": "string"
           },
+          "fetchpriority": {
+            "type": "string",
+            "pattern": "^high|low|auto$"
+          },
           "strategy": {
             "type": "string",
             "pattern": "^lazy|beforeInteractive|afterInteractive|shadow-dom$"
@@ -106,6 +110,10 @@
           "defer": {
             "type": "boolean",
             "default": false
+          },
+          "fetchpriority": {
+            "type": "string",
+            "pattern": "^high|low|auto$"
           },
           "strategy": {
             "type": "string",
