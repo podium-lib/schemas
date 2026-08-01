@@ -44,13 +44,13 @@
         "ajv-formats": "3.0.1"
     },
     "devDependencies": {
-        "@podium/eslint-config": "2.0.9",
+        "@podium/eslint-config": "2.0.11",
         "@podium/semantic-release-config": "3.0.6",
         "@podium/typescript-config": "1.0.1",
         "@types/node": "24.12.2",
-        "eslint": "9.39.4",
+        "eslint": "9.39.5",
         "npm-run-all2": "8.0.4",
-        "prettier": "3.9.4",
+        "prettier": "3.9.6",
         "semantic-release": "25.0.5",
         "tap": "21.5.0",
         "typescript": "5.9.3"
