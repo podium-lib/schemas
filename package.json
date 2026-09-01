@@ -44,7 +44,7 @@
         "ajv-formats": "3.0.1"
     },
     "devDependencies": {
-        "@podium/eslint-config": "2.0.11",
+        "@podium/eslint-config": "2.0.15",
         "@podium/semantic-release-config": "3.0.7",
         "@podium/typescript-config": "1.0.1",
         "@types/node": "24.12.2",
